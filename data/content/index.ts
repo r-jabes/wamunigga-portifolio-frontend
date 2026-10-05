@@ -35,6 +35,8 @@ export {
   type ServiceDuration,
 } from "./services";
 export { contactContent, type ContactContent } from "./contact";
+export { barbers, getActiveBarbers, getBarberById, type Barber } from "./barbers";
+export { bookingConfig } from "./booking-config";
 export {
   primaryNavigation,
   enabledNavigation,

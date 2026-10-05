@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 7 — services.** `/services` catalogue from `data/content/services.ts` (price, duration, booking).  
-Home services preview reads the same source.
+**Phase 8 — booking MVP.** Multi-step `/booking`, JSON store + APIs, lightweight `/admin`.  
+Set `BOOKING_ADMIN_SECRET` in `.env.local`. No online payments in v1.
