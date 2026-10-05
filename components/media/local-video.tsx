@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { Text } from "@/components/ui/text";
+import { mediaFrameClass } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import type { LocalVideo } from "@/data/content/videos";
 
@@ -15,7 +16,8 @@ type LocalVideoPlayerProps = {
 };
 
 /**
- * Local MP4 — width-first, viewport-capped so full frame stays visible.
+ * Local MP4 — reel frames share the same outer width as portrait stills
+ * so mobile grids stay uniform. The video itself keeps its aspect via contain.
  */
 export function LocalVideoPlayer({
   video,
@@ -60,14 +62,16 @@ export function LocalVideoPlayer({
     }
   }, [inView, prefersReducedMotion, autoPlayOnView]);
 
+  /** Reels use the portrait outer box so width matches stills. */
   const frameClass =
-    aspect === "reel"
-      ? "aspect-[9/16] w-full max-w-[min(100%,16rem,calc(58vh*9/16))]"
-      : aspect === "portrait"
-        ? "aspect-[3/4] w-full max-w-[min(100%,22rem,calc(62vh*3/4))]"
-        : aspect === "landscape"
-          ? "aspect-[4/3] w-full max-w-[min(100%,40rem,calc(50vh*4/3))]"
-          : "aspect-[16/9] w-full max-w-[min(100%,56rem,calc(42vh*16/9))]";
+    aspect === "reel" || aspect === "portrait"
+      ? mediaFrameClass.portrait
+      : aspect === "landscape"
+        ? mediaFrameClass.landscape
+        : mediaFrameClass.cinematic;
+
+  const fitClass =
+    aspect === "reel" ? "object-contain object-center" : "object-cover object-center";
 
   return (
     <figure
@@ -89,7 +93,7 @@ export function LocalVideoPlayer({
         ) : (
           <video
             ref={videoRef}
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className={cn("absolute inset-0 h-full w-full", fitClass)}
             src={video.src}
             poster={video.poster}
             muted

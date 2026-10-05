@@ -47,14 +47,14 @@ export function HomeCraftSection() {
           <FadeIn className="lg:col-span-4">
             <CinematicMedia image={content.images[1]} aspect="portrait" />
           </FadeIn>
-          <FadeIn className="mx-auto max-w-xs sm:col-span-2 lg:col-span-3 lg:mx-0">
+          <FadeIn className="lg:col-span-3">
             <LocalVideoPlayer video={colorVideo} aspect="reel" />
           </FadeIn>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3">
           {craftVideos.map((video) => (
-            <FadeIn key={video.id} className="mx-auto w-full max-w-xs sm:mx-0">
+            <FadeIn key={video.id}>
               <LocalVideoPlayer video={video} aspect="reel" />
             </FadeIn>
           ))}

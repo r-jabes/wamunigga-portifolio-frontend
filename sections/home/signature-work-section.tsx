@@ -54,7 +54,7 @@ export function HomeSignatureWorkSection() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {videos.map((video) => (
-            <FadeIn key={video.id} className="mx-auto w-full max-w-xs sm:mx-0">
+            <FadeIn key={video.id}>
               <LocalVideoPlayer video={video} aspect="reel" />
             </FadeIn>
           ))}

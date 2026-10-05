@@ -60,7 +60,7 @@ export function HomeReputationSection() {
               </FadeIn>
             ))}
           </Stagger>
-          <FadeIn className="mx-auto w-full max-w-[12rem] lg:col-span-4 lg:mx-0 lg:justify-self-end">
+          <FadeIn className="lg:col-span-4 lg:justify-self-end">
             <LocalVideoPlayer video={video} aspect="reel" />
           </FadeIn>
         </div>

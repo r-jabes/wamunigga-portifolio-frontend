@@ -1,6 +1,6 @@
 import { MediaImage } from "@/components/media";
 import type { HomeImageSlot } from "@/data/content/home";
-import { imageQuality } from "@/lib/images";
+import { imageQuality, mediaFrameClass } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 type CinematicMediaProps = {
@@ -17,18 +17,6 @@ type CinematicMediaProps = {
   fitViewport?: boolean;
   objectPosition?: string;
 };
-
-/**
- * Fill parent width up to a max, but never so wide that height exceeds ~70vh.
- */
-const frameClass = {
-  portrait:
-    "aspect-[3/4] w-full max-w-[min(100%,22rem,calc(62vh*3/4))]",
-  landscape:
-    "aspect-[4/3] w-full max-w-[min(100%,40rem,calc(50vh*4/3))]",
-  cinematic:
-    "aspect-[16/9] w-full max-w-[min(100%,56rem,calc(42vh*16/9))]",
-} as const;
 
 const sizesFor = {
   portrait: "(min-width: 1024px) 420px, 80vw",
@@ -52,7 +40,7 @@ export function CinematicMedia({
       className={cn(
         "relative mx-auto overflow-hidden bg-surface surface-film image-grain",
         fitViewport
-          ? frameClass[aspect]
+          ? mediaFrameClass[aspect]
           : cn(
               aspect === "portrait" && "aspect-[3/4] w-full",
               aspect === "landscape" && "aspect-[4/3] w-full",
