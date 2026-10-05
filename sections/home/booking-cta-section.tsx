@@ -1,3 +1,4 @@
+import { ConversionActions } from "@/components/contact";
 import { Section } from "@/components/layout/section";
 import { FadeIn, Stagger } from "@/components/motion";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -36,9 +37,10 @@ export function HomeBookingCtaSection() {
             {content.subline}
           </Text>
         </FadeIn>
-        <FadeIn staggerItem>
-          <ButtonLink href={content.primary.href} size="lg">
-            {content.primary.label}
+        <FadeIn staggerItem className="flex w-full flex-col items-start gap-4 md:items-center">
+          <ConversionActions layout="row" />
+          <ButtonLink href={content.secondary.href} variant="ghost" size="sm">
+            {content.secondary.label}
           </ButtonLink>
         </FadeIn>
       </Stagger>

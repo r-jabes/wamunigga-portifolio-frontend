@@ -34,5 +34,6 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 8 — booking MVP.** Multi-step `/booking`, JSON store + APIs, lightweight `/admin`.  
-Set `BOOKING_ADMIN_SECRET` in `.env.local`. No online payments in v1.
+**Phase 9 — contact + conversion.** `/contact` with WhatsApp, phone, social, hours, maps slots;  
+LocalBusiness JSON-LD, sitemap/robots, Open Graph image for social shares.  
+Fill real links in `data/content/contact.ts`. Set `BOOKING_ADMIN_SECRET` for `/admin`.

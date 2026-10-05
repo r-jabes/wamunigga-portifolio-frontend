@@ -8,17 +8,24 @@ export const siteConfig = {
   shortName: "Wamunigga",
   tagline: "THE ART OF THE CUT.",
   description:
-    "WAMUNIGGA CUTS — premium barbering and personal brand presence.",
+    "WAMUNIGGA CUTS — premium barbering. Book online, WhatsApp the chair, or find us from Instagram and TikTok.",
   /** Update before production deploy */
   url: "https://www.wamuniggacuts.com",
   locale: "en_RW",
-  ogImage: "/images/og-default.jpg",
+  /**
+   * Fallback for JSON-LD / explicit overrides.
+   * Default social previews use `app/opengraph-image.tsx`.
+   */
+  ogImage: "/opengraph-image",
   keywords: [
     "Wamunigga Cuts",
     "barber",
     "Rwanda",
+    "Kigali barber",
     "premium cuts",
+    "book a cut",
     "the art of the cut",
+    "Instagram barber",
   ],
 } as const;
 

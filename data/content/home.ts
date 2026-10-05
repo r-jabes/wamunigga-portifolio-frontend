@@ -105,8 +105,10 @@ export const homeContent = {
   bookingCta: {
     index: "06",
     headline: "YOUR NEXT CUT STARTS HERE.",
-    subline: "Book when you're ready. The chair is waiting.",
+    subline:
+      "Came from Instagram or WhatsApp? Book online, message the chair, or find every channel on Contact.",
     primary: { label: "BOOK YOUR CUT", href: "/booking" },
+    secondary: { label: "Contact", href: "/contact" },
   },
 } as const;
 

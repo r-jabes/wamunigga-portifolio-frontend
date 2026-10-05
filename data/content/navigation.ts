@@ -9,7 +9,7 @@ export const primaryNavigation = [
   { label: "Work", href: "/work", enabled: true },
   { label: "Services", href: "/services", enabled: true },
   { label: "Booking", href: "/booking", enabled: true },
-  { label: "Contact", href: "/contact", enabled: false },
+  { label: "Contact", href: "/contact", enabled: true },
 ] as const;
 
 export type NavItem = (typeof primaryNavigation)[number];

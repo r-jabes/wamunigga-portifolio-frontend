@@ -34,7 +34,16 @@ export {
   type ServicePrice,
   type ServiceDuration,
 } from "./services";
-export { contactContent, type ContactContent } from "./contact";
+export {
+  contactContent,
+  getPhoneHref,
+  hasConfiguredHours,
+  formatHourRange,
+  getActiveConversionChannels,
+  type ContactContent,
+  type OpeningHourDay,
+  type Weekday,
+} from "./contact";
 export { barbers, getActiveBarbers, getBarberById, type Barber } from "./barbers";
 export { bookingConfig } from "./booking-config";
 export {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
-import { focusRingClass } from "@/lib/a11y";
+import { externalLinkAriaLabel, focusRingClass } from "@/lib/a11y";
 
 type LinkProps = ComponentProps<typeof Link>;
 
@@ -20,9 +20,25 @@ const sizes = {
   lg: "h-14 px-8 text-sm tracking-[0.18em]",
 } as const;
 
+const buttonLinkClassName = (
+  variant: keyof typeof variants,
+  size: keyof typeof sizes,
+  className?: string,
+) =>
+  cn(
+    "inline-flex items-center justify-center font-sans font-medium uppercase transition-[color,background-color,border-color,transform,opacity] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "hover:-translate-y-px active:translate-y-0",
+    focusRingClass,
+    variants[variant],
+    sizes[size],
+    className,
+  );
+
 export type ButtonLinkProps = LinkProps & {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
+  /** Open in a new tab (WhatsApp, Maps, social). */
+  external?: boolean;
 };
 
 /** Link styled as a system button — for CTAs that navigate. */
@@ -30,20 +46,28 @@ export function ButtonLink({
   className,
   variant = "primary",
   size = "md",
+  external = false,
   children,
+  "aria-label": ariaLabel,
   ...props
 }: ButtonLinkProps) {
+  const externalProps = external
+    ? {
+        target: "_blank" as const,
+        rel: "noopener noreferrer",
+        "aria-label":
+          ariaLabel ??
+          (typeof children === "string"
+            ? externalLinkAriaLabel(children)
+            : undefined),
+      }
+    : { "aria-label": ariaLabel };
+
   return (
     <Link
       data-cursor="interactive"
-      className={cn(
-        "inline-flex items-center justify-center font-sans font-medium uppercase transition-[color,background-color,border-color,transform,opacity] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
-        "hover:-translate-y-px active:translate-y-0",
-        focusRingClass,
-        variants[variant],
-        sizes[size],
-        className,
-      )}
+      className={buttonLinkClassName(variant, size, className)}
+      {...externalProps}
       {...props}
     >
       {children}
