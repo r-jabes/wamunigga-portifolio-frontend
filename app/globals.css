@@ -1,47 +1,106 @@
 @import "tailwindcss";
 
 /*
-  Design tokens — prefer these utilities over arbitrary hex values.
-  Palette is available; the interface should remain predominantly monochrome.
+  WAMUNIGGA CUTS design tokens
+  Direction: RAW CRAFT × LUXURY DIGITAL
+  Predominant interface: monochrome (background + ivory). Accent/champagne are rare.
 */
 
 :root {
+  /* Color */
   --background: #0a0a0a;
   --foreground: #f2f0eb;
   --ivory: #f2f0eb;
+  --ivory-muted: rgba(242, 240, 235, 0.72);
+  --ivory-subtle: rgba(242, 240, 235, 0.45);
+  --ivory-faint: rgba(242, 240, 235, 0.12);
   --accent: #651b2e;
   --champagne: #b69a62;
   --muted: #8a8780;
   --surface: #121212;
+  --surface-elevated: #1a1a1a;
+  --surface-inset: #0e0e0e;
   --border: rgba(242, 240, 235, 0.12);
+  --border-strong: rgba(242, 240, 235, 0.28);
+  --focus: rgba(242, 240, 235, 0.8);
+
+  /* Typography sizes */
+  --text-display-xl: clamp(3.5rem, 10vw, 7.5rem);
+  --text-display-lg: clamp(2.75rem, 7vw, 5rem);
+  --text-display-md: clamp(2rem, 4.5vw, 3.25rem);
+  --text-heading: clamp(1.5rem, 2.5vw, 2rem);
+  --text-subhead: 1.125rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-label: 0.75rem;
+  --text-caption: 0.75rem;
+
+  /* Radius — sharp, editorial */
+  --radius-none: 0;
+  --radius-hairline: 1px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Shadows — restrained depth only */
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 0 0 0 1px rgba(242, 240, 235, 0.08);
+
+  /* Layout */
+  --container-narrow: 48rem;
+  --container-default: 72rem;
+  --container-wide: 80rem;
+  --gutter: 1.25rem;
+  --spacing-section: 5rem;
+  --spacing-section-lg: 8rem;
+  --spacing-section-hero: clamp(5rem, 12vh, 9rem);
+
+  /* Motion */
+  --ease-out-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 550ms;
+
+  /* Cursor */
+  --cursor-size: 12px;
+  --cursor-size-active: 40px;
 }
 
 @theme inline {
-  /* Color */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ivory: var(--ivory);
+  --color-ivory-muted: var(--ivory-muted);
+  --color-ivory-subtle: var(--ivory-subtle);
+  --color-ivory-faint: var(--ivory-faint);
   --color-accent: var(--accent);
   --color-champagne: var(--champagne);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-inset: var(--surface-inset);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-focus: var(--focus);
 
-  /* Typography — maps next/font source vars to Tailwind font utilities */
   --font-sans: var(--font-dm-sans), ui-sans-serif, sans-serif;
   --font-display: var(--font-oswald), ui-sans-serif, sans-serif;
 
-  /* Breakpoints (mobile-first) */
-  --breakpoint-xs: 23.4375rem; /* 375px */
-  --breakpoint-sm: 40rem; /* 640px */
-  --breakpoint-md: 48rem; /* 768px */
-  --breakpoint-lg: 64rem; /* 1024px */
-  --breakpoint-xl: 80rem; /* 1280px */
-  --breakpoint-2xl: 96rem; /* 1536px */
+  --radius-none: 0;
+  --radius-hairline: 1px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
 
-  /* Spacing rhythm */
-  --spacing-section: 5rem;
-  --spacing-section-lg: 8rem;
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 0 0 0 1px rgba(242, 240, 235, 0.08);
+
+  --breakpoint-xs: 23.4375rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
 }
 
 @layer base {
@@ -68,8 +127,22 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-body);
+    line-height: 1.65;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  body[data-custom-cursor="true"] {
+    cursor: none;
+  }
+
+  body[data-custom-cursor="true"] a,
+  body[data-custom-cursor="true"] button,
+  body[data-custom-cursor="true"] [data-cursor="interactive"],
+  body[data-custom-cursor="true"] [role="button"] {
+    cursor: none;
   }
 
   ::selection {
@@ -77,9 +150,79 @@
     color: var(--ivory);
   }
 
+  /* Global focus — high-contrast ivory ring on dark surfaces */
   :focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--ivory) 80%, transparent);
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--ivory-faint);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ivory-subtle);
+  }
+}
+
+@layer components {
+  .surface-base {
+    background: var(--surface);
+    color: var(--foreground);
+  }
+
+  .surface-elevated {
+    background: var(--surface-elevated);
+    box-shadow: var(--shadow-inset);
+  }
+
+  .surface-inset {
+    background: var(--surface-inset);
+  }
+
+  .surface-hairline {
+    border: 1px solid var(--border);
+  }
+
+  .surface-film {
+    position: relative;
+  }
+
+  .surface-film::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.55),
+      rgba(10, 10, 10, 0.05) 45%,
+      rgba(10, 10, 10, 0.2)
+    );
+  }
+
+  .image-grain {
+    position: relative;
+  }
+
+  .image-grain::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
@@ -92,9 +235,96 @@
     padding-block: var(--spacing-section);
   }
 
+  .section-space-hero {
+    padding-block: var(--spacing-section-hero);
+  }
+
   @media (min-width: 1024px) {
     .section-space {
       padding-block: var(--spacing-section-lg);
     }
+  }
+
+  .type-display-xl {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+    font-size: var(--text-display-xl);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  .type-display-lg {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+    font-size: var(--text-display-lg);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .type-display-md {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+    font-size: var(--text-display-md);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .type-heading {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+    font-size: var(--text-heading);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .type-subhead {
+    font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-subhead);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+
+  .type-body {
+    font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-body);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+  }
+
+  .type-body-sm {
+    font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-body-sm);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+  }
+
+  .type-label {
+    font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .type-caption {
+    font-family: var(--font-sans), ui-sans-serif, sans-serif;
+    font-size: var(--text-caption);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }

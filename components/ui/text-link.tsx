@@ -5,23 +5,39 @@ import { externalLinkAriaLabel, focusRingClass } from "@/lib/a11y";
 
 type NextLinkProps = ComponentProps<typeof Link>;
 
+const variants = {
+  inline:
+    "font-sans text-ivory-muted underline-offset-4 transition-colors duration-200 hover:text-ivory hover:underline",
+  nav: "type-label text-ivory-subtle transition-colors duration-200 hover:text-ivory",
+  cta: "type-label text-ivory transition-colors duration-200 hover:text-ivory/80",
+  quiet:
+    "font-sans text-sm text-muted transition-colors duration-200 hover:text-ivory-muted",
+} as const;
+
+export type TextLinkVariant = keyof typeof variants;
+
 export type TextLinkProps = NextLinkProps & {
   external?: boolean;
+  variant?: TextLinkVariant;
   underline?: boolean;
 };
 
 /**
- * Accessible navigation / inline link primitive.
+ * Accessible link primitive with editorial variants.
  * Use for in-app routes; set `external` for third-party destinations.
  */
 export function TextLink({
   className,
   external = false,
-  underline = true,
+  variant = "inline",
+  underline,
   children,
   "aria-label": ariaLabel,
   ...props
 }: TextLinkProps) {
+  const shouldUnderline =
+    underline ?? (variant === "inline" || variant === "quiet");
+
   const externalProps = external
     ? {
         target: "_blank",
@@ -36,9 +52,11 @@ export function TextLink({
 
   return (
     <Link
+      data-cursor="interactive"
       className={cn(
-        "font-sans text-ivory/80 transition-colors duration-200 hover:text-ivory",
-        underline && "underline-offset-4 hover:underline",
+        variants[variant],
+        shouldUnderline && variant !== "inline" && "underline-offset-4 hover:underline",
+        !shouldUnderline && "no-underline",
         focusRingClass,
         className,
       )}

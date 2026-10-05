@@ -2,9 +2,9 @@ import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const widths = {
-  narrow: "max-w-3xl",
-  default: "max-w-6xl",
-  wide: "max-w-7xl",
+  narrow: "max-w-[var(--container-narrow)]",
+  default: "max-w-[var(--container-default)]",
+  wide: "max-w-[var(--container-wide)]",
   full: "max-w-none",
 } as const;
 

@@ -11,8 +11,10 @@ const presets = {
 
 type FadeInProps = HTMLMotionProps<"div"> & {
   preset?: keyof typeof presets;
-  /** When true, animates on enter; when false, uses scroll viewport trigger */
+  /** When true, animates on mount; when false, uses scroll viewport trigger */
   immediate?: boolean;
+  /** Expose variants only — parent `Stagger` owns timing */
+  staggerItem?: boolean;
 };
 
 /** Subtle reveal primitive for premium section/content entrances. */
@@ -21,8 +23,21 @@ export function FadeIn({
   children,
   preset = "fade-up",
   immediate = false,
+  staggerItem = false,
   ...props
 }: FadeInProps) {
+  if (staggerItem) {
+    return (
+      <motion.div
+        className={cn(className)}
+        variants={presets[preset]}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       className={cn(className)}

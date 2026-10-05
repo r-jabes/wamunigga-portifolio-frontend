@@ -34,4 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 0 — foundation only.** Do not treat the current home route as the finished homepage.
+**Phase 1 — design system.** Tokens, primitives, motion, cursor, and mobile nav are in place.  
+See `DESIGN-SYSTEM.md`. Homepage composition is deferred to Phase 2.

@@ -76,6 +76,27 @@ export const staggerChildren = (stagger = 0.08, delayChildren = 0): Variants => 
   },
 });
 
+/** Understated page/section entrance — use sparingly on route roots. */
+export const pageEnter: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: duration.slow,
+      ease: ease.out,
+    },
+  },
+};
+
+/** Soft media hover scale — pair with overflow-hidden frames */
+export const mediaHover = {
+  rest: { scale: 1 },
+  hover: {
+    scale: 1.03,
+    transition: transition.slow,
+  },
+} as const;
+
 /** Default viewport trigger for scroll reveals */
 export const revealViewport = {
   once: true,

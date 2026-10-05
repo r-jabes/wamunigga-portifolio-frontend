@@ -1,17 +1,16 @@
 import { siteConfig } from "@/data/content/site";
 import { Container } from "@/components/layout/container";
+import { Text } from "@/components/ui/text";
 
 /** Structural footer shell — contact/social content lands in later phases. */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-ivory/10">
+    <footer className="mt-auto border-t border-border">
       <Container className="flex flex-col gap-2 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-display text-sm uppercase tracking-[0.18em] text-ivory/80">
+        <Text variant="label" className="text-ivory-muted">
           {siteConfig.name}
-        </p>
-        <p className="font-sans text-xs uppercase tracking-[0.14em] text-ivory/45">
-          {siteConfig.tagline}
-        </p>
+        </Text>
+        <Text variant="caption">{siteConfig.tagline}</Text>
       </Container>
     </footer>
   );

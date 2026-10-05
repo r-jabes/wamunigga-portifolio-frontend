@@ -1,20 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { enabledNavigation } from "@/data/content/navigation";
 import { siteConfig } from "@/data/content/site";
 import { Container } from "@/components/layout/container";
+import { MobileNav } from "@/components/layout/mobile-nav";
 import { focusRingClass } from "@/lib/a11y";
 import { cn } from "@/lib/utils";
 
 /**
- * Structural header chrome only — not a finished navigation experience.
- * Additional IA links unlock when their routes are enabled in content data.
+ * Structural header chrome.
+ * Desktop: inline enabled routes. Mobile: full-screen MobileNav.
  */
 export function SiteHeader() {
   return (
-    <header className="border-b border-ivory/10">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-6 md:h-20">
         <Link
           href="/"
+          data-cursor="interactive"
           className={cn(
             "font-display text-lg uppercase tracking-[0.18em] text-ivory md:text-xl",
             focusRingClass,
@@ -23,15 +27,16 @@ export function SiteHeader() {
           {siteConfig.name}
         </Link>
 
-        {enabledNavigation.length > 1 ? (
-          <nav aria-label="Primary">
-            <ul className="flex items-center gap-5">
+        <nav aria-label="Primary" className="hidden lg:block">
+          {enabledNavigation.length > 0 ? (
+            <ul className="flex items-center gap-7">
               {enabledNavigation.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    data-cursor="interactive"
                     className={cn(
-                      "font-sans text-xs uppercase tracking-[0.16em] text-ivory/70 transition-colors hover:text-ivory",
+                      "type-label text-ivory-subtle transition-colors duration-200 hover:text-ivory",
                       focusRingClass,
                     )}
                   >
@@ -40,8 +45,10 @@ export function SiteHeader() {
                 </li>
               ))}
             </ul>
-          </nav>
-        ) : null}
+          ) : null}
+        </nav>
+
+        <MobileNav />
       </Container>
     </header>
   );
