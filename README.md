@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 2 — global site shell.** Navbar, mobile menu, atmosphere, footer, cursor, and page transitions are live.  
-Homepage composition is still deferred.
+**Phase 3 — editorial homepage hero.** Full-bleed cinematic hero with brand, CTAs, reveal, and scroll motion.  
+Add real photography at `public/images/hero.jpg` and set `heroContent.image.src`.

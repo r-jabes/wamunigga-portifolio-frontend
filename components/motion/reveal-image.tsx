@@ -10,6 +10,8 @@ type RevealImageProps = {
   children: ReactNode;
   /** Clip direction for the editorial reveal */
   from?: "bottom" | "left" | "right";
+  /** Hero / LCP — animate on mount instead of waiting for scroll */
+  immediate?: boolean;
 };
 
 /**
@@ -19,6 +21,7 @@ export function RevealImage({
   className,
   children,
   from = "bottom",
+  immediate = false,
 }: RevealImageProps) {
   const clip =
     from === "left"
@@ -31,8 +34,12 @@ export function RevealImage({
     <motion.div
       className={cn("overflow-hidden", className)}
       initial={{ clipPath: clip }}
-      whileInView={{ clipPath: "inset(0 0 0 0)" }}
-      viewport={revealViewport}
+      {...(immediate
+        ? { animate: { clipPath: "inset(0 0 0 0)" } }
+        : {
+            whileInView: { clipPath: "inset(0 0 0 0)" },
+            viewport: revealViewport,
+          })}
       transition={transition.cinematic}
     >
       {children}
