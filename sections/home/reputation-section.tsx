@@ -39,31 +39,44 @@ export function HomeReputationSection() {
           </Stagger>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-12 lg:items-start">
-          <Stagger
-            stagger={0.08}
-            className="grid grid-cols-3 gap-2 sm:gap-4 lg:col-span-8"
-          >
-            {content.frames.map((frame) => (
-              <FadeIn key={frame.id} staggerItem>
-                <article className="flex flex-col gap-3">
-                  <CinematicMedia image={frame.image} aspect="portrait" />
-                  <div className="flex flex-col gap-1 border-t border-border pt-3">
-                    <Text variant="label" className="text-ivory-subtle">
-                      {frame.caption}
-                    </Text>
-                    <Text variant="subhead" className="text-ivory">
-                      {frame.label}
-                    </Text>
-                  </div>
-                </article>
-              </FadeIn>
-            ))}
-          </Stagger>
-          <FadeIn className="lg:col-span-4 lg:justify-self-end">
-            <LocalVideoPlayer video={video} aspect="reel" />
+        {/* One equal grid — stills + reel share the same cell size */}
+        <Stagger
+          stagger={0.08}
+          className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
+        >
+          {content.frames.map((frame) => (
+            <FadeIn key={frame.id} staggerItem>
+              <article className="flex flex-col gap-3">
+                <CinematicMedia image={frame.image} aspect="portrait" />
+                <div className="flex flex-col gap-1 border-t border-border pt-3">
+                  <Text variant="label" className="text-ivory-subtle">
+                    {frame.caption}
+                  </Text>
+                  <Text variant="subhead" className="text-ivory">
+                    {frame.label}
+                  </Text>
+                </div>
+              </article>
+            </FadeIn>
+          ))}
+          <FadeIn staggerItem>
+            <article className="flex flex-col gap-3">
+              <LocalVideoPlayer
+                video={video}
+                aspect="reel"
+                showCaption={false}
+              />
+              <div className="flex flex-col gap-1 border-t border-border pt-3">
+                <Text variant="label" className="text-ivory-subtle">
+                  Film
+                </Text>
+                <Text variant="subhead" className="text-ivory">
+                  Davido
+                </Text>
+              </div>
+            </article>
           </FadeIn>
-        </div>
+        </Stagger>
       </div>
     </Section>
   );

@@ -16,8 +16,8 @@ type LocalVideoPlayerProps = {
 };
 
 /**
- * Local MP4 — reel frames share the same outer width as portrait stills
- * so mobile grids stay uniform. The video itself keeps its aspect via contain.
+ * Local MP4 — reel frames use the same outer box as portrait stills
+ * and fill that box (object-cover) so grid rows stay uniform.
  */
 export function LocalVideoPlayer({
   video,
@@ -62,7 +62,6 @@ export function LocalVideoPlayer({
     }
   }, [inView, prefersReducedMotion, autoPlayOnView]);
 
-  /** Reels use the portrait outer box so width matches stills. */
   const frameClass =
     aspect === "reel" || aspect === "portrait"
       ? mediaFrameClass.portrait
@@ -70,17 +69,14 @@ export function LocalVideoPlayer({
         ? mediaFrameClass.landscape
         : mediaFrameClass.cinematic;
 
-  const fitClass =
-    aspect === "reel" ? "object-contain object-center" : "object-cover object-center";
-
   return (
     <figure
       ref={containerRef}
-      className={cn("flex w-full flex-col items-center gap-2", className)}
+      className={cn("flex w-full flex-col gap-2", className)}
     >
       <div
         className={cn(
-          "relative overflow-hidden border border-border bg-surface surface-film",
+          "relative mx-auto overflow-hidden border border-border bg-surface surface-film",
           frameClass,
         )}
       >
@@ -93,7 +89,7 @@ export function LocalVideoPlayer({
         ) : (
           <video
             ref={videoRef}
-            className={cn("absolute inset-0 h-full w-full", fitClass)}
+            className="absolute inset-0 h-full w-full object-cover object-center"
             src={video.src}
             poster={video.poster}
             muted
@@ -107,7 +103,7 @@ export function LocalVideoPlayer({
         )}
       </div>
       {showCaption ? (
-        <figcaption className="w-full text-center">
+        <figcaption className="w-full">
           <Text variant="caption" className="text-muted">
             {video.title}
           </Text>

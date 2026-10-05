@@ -35,12 +35,12 @@ export const aspectRatioClass: Record<ImageAspect, string> = {
 };
 
 /**
- * Shared editorial frame sizes — images and video containers stay aligned,
- * especially on mobile. Height is capped via max-width so ~62vh is respected.
+ * Shared editorial frame sizes — images and video containers stay aligned.
+ * Width fills the parent; max-width only caps so height stays within ~62vh.
  */
 export const mediaFrameClass = {
-  /** Still portraits + reel containers (same outer width) */
-  portrait: "aspect-[3/4] w-full max-w-[min(100%,22rem,calc(62vh*3/4))]",
-  landscape: "aspect-[4/3] w-full max-w-[min(100%,40rem,calc(50vh*4/3))]",
-  cinematic: "aspect-[16/9] w-full max-w-[min(100%,56rem,calc(42vh*16/9))]",
+  /** Still portraits + reel containers (same outer box) */
+  portrait: "aspect-[3/4] w-full max-w-[min(100%,calc(62vh*3/4))]",
+  landscape: "aspect-[4/3] w-full max-w-[min(100%,calc(50vh*4/3))]",
+  cinematic: "aspect-[16/9] w-full max-w-[min(100%,calc(42vh*16/9))]",
 } as const;
