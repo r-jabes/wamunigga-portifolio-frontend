@@ -68,29 +68,7 @@ export const homeContent = {
     title: "Services",
     eyebrow: "What we offer",
     intro:
-      "Minimal menu, maximum attention. Pricing and full service detail will be confirmed before launch.",
-    items: [
-      {
-        id: "cut",
-        name: "The Cut",
-        description: "Precision haircut shaped to your face, hair, and presence.",
-      },
-      {
-        id: "beard",
-        name: "Beard & Line",
-        description: "Sculpted beard work and sharp lines — clean, intentional, finished.",
-      },
-      {
-        id: "groom",
-        name: "Full Groom",
-        description: "Cut, beard, and detail — the complete chair experience.",
-      },
-      {
-        id: "detail",
-        name: "Detail Session",
-        description: "Refresh, shape, and finish between full visits.",
-      },
-    ],
+      "Minimal menu, maximum attention. Prices and durations live in the central service catalogue.",
   },
   experience: {
     index: "05",

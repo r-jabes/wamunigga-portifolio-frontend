@@ -12,7 +12,6 @@ import {
   archivePage,
   filterArchiveItems,
   getCategoryById,
-  type ArchiveCategoryId,
   type ArchiveFilterId,
   type ArchiveItem,
 } from "@/data/content/archive";

@@ -7,7 +7,7 @@ export const primaryNavigation = [
   { label: "Home", href: "/", enabled: true },
   { label: "Story", href: "/story", enabled: true },
   { label: "Work", href: "/work", enabled: true },
-  { label: "Services", href: "/services", enabled: false },
+  { label: "Services", href: "/services", enabled: true },
   { label: "Booking", href: "/booking", enabled: true },
   { label: "Contact", href: "/contact", enabled: false },
 ] as const;

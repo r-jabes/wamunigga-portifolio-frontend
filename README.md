@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 6 — story page.** Editorial `/story` with verified-content slots only (no invented biography).  
-Add approved copy to `data/content/story.ts`.
+**Phase 7 — services.** `/services` catalogue from `data/content/services.ts` (price, duration, booking).  
+Home services preview reads the same source.

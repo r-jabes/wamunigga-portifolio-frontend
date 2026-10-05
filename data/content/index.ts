@@ -21,6 +21,19 @@ export {
   type StorySection,
   type StoryImage,
 } from "./story";
+export {
+  services,
+  servicesPage,
+  featuredServiceIds,
+  getServiceById,
+  getFeaturedServices,
+  formatServicePrice,
+  formatServiceDuration,
+  serviceBookingHref,
+  type Service,
+  type ServicePrice,
+  type ServiceDuration,
+} from "./services";
 export { contactContent, type ContactContent } from "./contact";
 export {
   primaryNavigation,

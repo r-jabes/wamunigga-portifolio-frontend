@@ -1,11 +1,14 @@
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Section } from "@/components/layout/section";
 import { FadeIn, Stagger } from "@/components/motion";
-import { Surface } from "@/components/ui/surface";
+import { ServiceCard } from "@/components/services/service-card";
+import { TextLink } from "@/components/ui/text-link";
 import { Text } from "@/components/ui/text";
+import { getFeaturedServices } from "@/data/content/services";
 import { homeContent } from "@/data/content/home";
 
 const content = homeContent.services;
+const featuredServices = getFeaturedServices();
 
 export function HomeServicesSection() {
   return (
@@ -22,27 +25,20 @@ export function HomeServicesSection() {
           </Text>
         </div>
 
-        <Stagger className="flex flex-col gap-px bg-border">
-          {content.items.map((service) => (
+        <Stagger className="flex flex-col gap-4">
+          {featuredServices.map((service, index) => (
             <FadeIn key={service.id} staggerItem>
-              <Surface
-                tone="base"
-                hairline={false}
-                padded
-                className="border border-border bg-background"
-              >
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
-                  <Text variant="heading" className="text-lg tracking-[0.14em]">
-                    {service.name}
-                  </Text>
-                  <Text variant="body-sm" className="max-w-md sm:text-right">
-                    {service.description}
-                  </Text>
-                </div>
-              </Surface>
+              <ServiceCard
+                service={service}
+                index={String(index + 1).padStart(2, "0")}
+              />
             </FadeIn>
           ))}
         </Stagger>
+
+        <TextLink href="/services" variant="cta" className="inline-flex">
+          View full menu
+        </TextLink>
       </div>
     </Section>
   );
