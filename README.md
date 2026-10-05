@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 5 — work archive.** Editorial `/work` with category filtering, large frames, hover, and lightbox.  
-Add photography via `data/content/archive.ts`.
+**Phase 6 — story page.** Editorial `/story` with verified-content slots only (no invented biography).  
+Add approved copy to `data/content/story.ts`.

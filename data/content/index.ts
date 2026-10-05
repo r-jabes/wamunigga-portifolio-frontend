@@ -13,6 +13,14 @@ export {
   type ArchiveFilterId,
   type ArchiveItem,
 } from "./archive";
+export {
+  storyPage,
+  storySections,
+  storyPendingMessage,
+  type StoryPageContent,
+  type StorySection,
+  type StoryImage,
+} from "./story";
 export { contactContent, type ContactContent } from "./contact";
 export {
   primaryNavigation,

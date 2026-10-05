@@ -5,7 +5,7 @@
  */
 export const primaryNavigation = [
   { label: "Home", href: "/", enabled: true },
-  { label: "Story", href: "/story", enabled: false },
+  { label: "Story", href: "/story", enabled: true },
   { label: "Work", href: "/work", enabled: true },
   { label: "Services", href: "/services", enabled: false },
   { label: "Booking", href: "/booking", enabled: true },
