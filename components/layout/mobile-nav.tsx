@@ -15,12 +15,12 @@ type MobileNavProps = {
 };
 
 /**
- * Full-screen mobile navigation.
- * Planned (disabled) routes render as non-interactive labels until pages ship.
+ * Full-screen mobile navigation — cinematic, editorial, brand-led.
+ * Planned routes render as muted non-interactive labels until pages ship.
  */
 export function MobileNav({ className }: MobileNavProps) {
   const [open, setOpen] = useState(false);
-  const titleId = useId();
+  const panelId = useId();
   useScrollLock(open);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function MobileNav({ className }: MobileNavProps) {
         type="button"
         data-cursor="interactive"
         aria-expanded={open}
-        aria-controls={titleId}
+        aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
         className={cn(
           "relative z-[60] flex h-11 items-center gap-3 type-label text-ivory",
@@ -50,13 +50,19 @@ export function MobileNav({ className }: MobileNavProps) {
         <span aria-hidden className="relative block h-3 w-6">
           <span
             className={cn(
-              "absolute left-0 block h-px w-full bg-ivory transition-transform duration-300",
+              "absolute left-0 block h-px w-full bg-ivory transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
               open ? "top-1.5 rotate-45" : "top-0.5",
             )}
           />
           <span
             className={cn(
-              "absolute left-0 block h-px w-full bg-ivory transition-transform duration-300",
+              "absolute left-0 top-1.5 block h-px w-full bg-ivory transition-opacity duration-200",
+              open ? "opacity-0" : "opacity-100",
+            )}
+          />
+          <span
+            className={cn(
+              "absolute left-0 block h-px w-full bg-ivory transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
               open ? "top-1.5 -rotate-45" : "top-2.5",
             )}
           />
@@ -67,44 +73,52 @@ export function MobileNav({ className }: MobileNavProps) {
       <AnimatePresence>
         {open ? (
           <motion.div
-            id={titleId}
+            id={panelId}
             role="dialog"
             aria-modal="true"
             aria-label={`${siteConfig.name} menu`}
-            className="fixed inset-0 z-50 flex flex-col bg-background"
+            className="site-atmosphere fixed inset-0 z-50 flex flex-col bg-background"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={transition.base}
           >
-            <div className="flex h-16 items-center justify-end px-5 sm:px-6">
-              {/* Close control lives in the toggle above (z-60). */}
+            <div className="relative z-[1] flex h-16 items-center justify-between px-5 sm:px-6">
+              <p className="font-display text-sm uppercase tracking-[0.2em] text-ivory">
+                {siteConfig.shortName}
+              </p>
+              {/* Close control stays on the toggle (z-60) above the overlay. */}
+              <span className="w-16" aria-hidden />
             </div>
 
             <motion.nav
               aria-label="Mobile"
-              className="flex flex-1 flex-col justify-center px-5 pb-16 sm:px-6"
-              variants={staggerChildren(0.07, 0.08)}
+              className="relative z-[1] flex flex-1 flex-col justify-center px-5 pb-20 sm:px-6"
+              variants={staggerChildren(0.07, 0.1)}
               initial="hidden"
               animate="visible"
             >
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-1 border-t border-border pt-8">
                 {primaryNavigation.map((item) => (
-                  <motion.li key={item.href} variants={fadeUp}>
+                  <motion.li
+                    key={item.href}
+                    variants={fadeUp}
+                    className="border-b border-border"
+                  >
                     {item.enabled ? (
                       <Link
                         href={item.href}
                         data-cursor="interactive"
                         onClick={() => setOpen(false)}
                         className={cn(
-                          "block type-display-md py-2 text-ivory transition-colors hover:text-ivory-muted",
+                          "block py-4 type-display-md text-ivory transition-colors duration-200 hover:text-ivory-muted",
                           focusRingClass,
                         )}
                       >
                         {item.label}
                       </Link>
                     ) : (
-                      <span className="block type-display-md py-2 text-ivory/25">
+                      <span className="block py-4 type-display-md text-ivory/20">
                         {item.label}
                       </span>
                     )}
@@ -112,12 +126,11 @@ export function MobileNav({ className }: MobileNavProps) {
                 ))}
               </ul>
 
-              <motion.p
-                variants={fadeUp}
-                className="mt-12 type-label text-ivory-subtle"
-              >
-                {siteConfig.tagline}
-              </motion.p>
+              <motion.div variants={fadeUp} className="mt-12">
+                <p className="type-label text-ivory-subtle">
+                  {siteConfig.tagline}
+                </p>
+              </motion.div>
             </motion.nav>
           </motion.div>
         ) : null}

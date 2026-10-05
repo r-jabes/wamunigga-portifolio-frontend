@@ -326,3 +326,6 @@ Phase 1 establishes the **system**.
 It does **not** deliver the finished homepage, booking flow, or real brand photography.
 
 When Phase 2 begins, replace the temporary showcase with homepage composition built from these primitives.
+
+> **Update:** Phase 2 delivered the global site shell (nav, atmosphere, footer, transitions).  
+> The design-system showcase is no longer the home route. Homepage composition remains a later phase.

@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 1 — design system.** Tokens, primitives, motion, cursor, and mobile nav are in place.  
-See `DESIGN-SYSTEM.md`. Homepage composition is deferred to Phase 2.
+**Phase 2 — global site shell.** Navbar, mobile menu, atmosphere, footer, cursor, and page transitions are live.  
+Homepage composition is still deferred.
