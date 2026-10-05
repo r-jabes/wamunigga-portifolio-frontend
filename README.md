@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 4 — homepage storytelling.** Hero plus sections 01–06; footer connect block (07) via `contactContent`.  
-Set real images in `data/content/home.ts` and social/location in `data/content/contact.ts`.
+**Phase 5 — work archive.** Editorial `/work` with category filtering, large frames, hover, and lightbox.  
+Add photography via `data/content/archive.ts`.
