@@ -1,19 +1,16 @@
 /**
- * Work / archive content — editorial categories and frames.
- * Set `image.src` when real photography is available. No stock imagery.
+ * Work / archive — real photography only.
+ * Amasunzu omitted until strong visual assets exist.
  */
+
+import { wamuniggaMedia } from "@/data/content/media";
 
 export type ArchiveImage = {
   src: string | null;
   alt: string;
 };
 
-export type ArchiveCategoryId =
-  | "fades"
-  | "amasunzu"
-  | "designs"
-  | "beard"
-  | "signature-cuts";
+export type ArchiveCategoryId = "fades" | "colour" | "clients" | "signature-cuts";
 
 export type ArchiveCategory = {
   id: ArchiveCategoryId;
@@ -35,7 +32,7 @@ export type ArchiveItem = {
 export const archivePage = {
   title: "THE WORK",
   intro:
-    "An editorial archive of craft — fades, culture, design, and signature finishes from the chair.",
+    "Fades, colour, and clients from the chair — selected frames, not a feed dump.",
 } as const;
 
 export const archiveCategories: ArchiveCategory[] = [
@@ -43,31 +40,25 @@ export const archiveCategories: ArchiveCategory[] = [
     id: "fades",
     index: "01",
     title: "FADES",
-    description: "Gradients with architecture — clean, sharp, intentional.",
+    description: "Blend, line, and structure.",
   },
   {
-    id: "amasunzu",
+    id: "colour",
     index: "02",
-    title: "AMASUNZU",
-    description: "Cultural precision — shape, line, and heritage reimagined.",
+    title: "COLOUR",
+    description: "Colour work finished in the shop.",
   },
   {
-    id: "designs",
+    id: "clients",
     index: "03",
-    title: "DESIGNS",
-    description: "Pattern, texture, and graphic intent in the hair.",
-  },
-  {
-    id: "beard",
-    index: "04",
-    title: "BEARD",
-    description: "Sculpted beard work — line, weight, and finish.",
+    title: "CLIENTS",
+    description: "People who sat in the chair.",
   },
   {
     id: "signature-cuts",
-    index: "05",
-    title: "SIGNATURE CUTS",
-    description: "Defining frames — the cuts that carry the name.",
+    index: "04",
+    title: "SIGNATURE",
+    description: "Frames that carry the name.",
   },
 ];
 
@@ -75,72 +66,72 @@ export const archiveItems: ArchiveItem[] = [
   {
     id: "fade-01",
     categoryId: "fades",
-    title: "Low fade — structure",
+    title: "Fade — structure",
     layout: "cinematic",
-    image: { src: null, alt: "Fade — structure" },
+    image: wamuniggaMedia.work.fade01,
   },
   {
     id: "fade-02",
     categoryId: "fades",
-    title: "Mid fade — blend",
+    title: "Fade — detail",
     layout: "portrait",
-    image: { src: null, alt: "Fade — blend" },
+    image: wamuniggaMedia.work.fade02,
   },
   {
-    id: "amasunzu-01",
-    categoryId: "amasunzu",
-    title: "Amasunzu — line",
+    id: "colour-01",
+    categoryId: "colour",
+    title: "Colour — finish",
+    layout: "portrait",
+    image: wamuniggaMedia.work.color01,
+  },
+  {
+    id: "client-yve",
+    categoryId: "clients",
+    title: "Yve Kimenyi",
+    layout: "portrait",
+    image: wamuniggaMedia.clients.yveKimenyi,
+  },
+  {
+    id: "client-juma",
+    categoryId: "clients",
+    title: "Juma Jux",
     layout: "cinematic",
-    image: { src: null, alt: "Amasunzu — line" },
+    image: wamuniggaMedia.clients.jumaJux,
   },
   {
-    id: "amasunzu-02",
-    categoryId: "amasunzu",
-    title: "Amasunzu — profile",
+    id: "client-chris",
+    categoryId: "clients",
+    title: "Chris Easy",
     layout: "portrait",
-    image: { src: null, alt: "Amasunzu — profile" },
+    image: wamuniggaMedia.clients.chrisEasy,
   },
   {
-    id: "design-01",
-    categoryId: "designs",
-    title: "Design — graphic",
-    layout: "portrait",
-    image: { src: null, alt: "Hair design — graphic" },
-  },
-  {
-    id: "design-02",
-    categoryId: "designs",
-    title: "Design — texture",
+    id: "client-davido",
+    categoryId: "clients",
+    title: "Davido",
     layout: "cinematic",
-    image: { src: null, alt: "Hair design — texture" },
+    image: wamuniggaMedia.clients.davido,
   },
   {
-    id: "beard-01",
-    categoryId: "beard",
-    title: "Beard — line-up",
-    layout: "cinematic",
-    image: { src: null, alt: "Beard — line-up" },
-  },
-  {
-    id: "beard-02",
-    categoryId: "beard",
-    title: "Beard — sculpt",
+    id: "client-rugaju",
+    categoryId: "clients",
+    title: "Rugaju Reagan",
     layout: "portrait",
-    image: { src: null, alt: "Beard — sculpt" },
+    image: wamuniggaMedia.clients.rugajuReagan,
   },
   {
-    id: "signature-01",
+    id: "signature-team",
     categoryId: "signature-cuts",
-    title: "Signature — finish",
-    layout: "cinematic",
-    image: { src: null, alt: "Signature cut — finish" },
+    title: "Team taper",
+    layout: "portrait",
+    image: wamuniggaMedia.team.fade01,
   },
   {
-    id: "signature-02",
+    id: "signature-shop",
     categoryId: "signature-cuts",
-    title: "Signature — silhouette",
-    layout: "portrait",
-    image: { src: null, alt: "Signature cut — silhouette" },
+    title: "The workspace",
+    layout: "cinematic",
+    image: wamuniggaMedia.shop.workspace,
   },
 ];
 

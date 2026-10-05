@@ -1,9 +1,9 @@
 /**
- * Story page content structure.
- *
- * IMPORTANT: Do not invent biography, dates, clientele names, or team details.
- * Add text to `paragraphs` only after Wamunigga or reliable sources verify it.
+ * Story page — portraits only until verified biography exists.
+ * Do not invent childhood stories, awards, or clienteles lists.
  */
+
+import { wamuniggaMedia } from "@/data/content/media";
 
 export type StoryImage = {
   src: string | null;
@@ -21,68 +21,53 @@ export type StorySection = {
 
 export const storyPage = {
   kicker: "Story",
-  title: "THE MAN BEHIND THE CHAIR",
+  title: "WAMUNIGGA",
   intro:
-    "The personal brand behind Wamunigga Cuts. Narrative on this page is reserved for verified facts — not generated filler.",
+    "The barber behind Wamunigga Cuts. Full biography stays off this page until he provides it.",
   portrait: {
-    src: null as string | null,
-    alt: "Wamunigga — portrait",
+    src: wamuniggaMedia.portraits.fashion.src,
+    alt: wamuniggaMedia.portraits.fashion.alt,
+  } satisfies StoryImage,
+  secondaryPortrait: {
+    src: wamuniggaMedia.portraits.portrait02.src,
+    alt: wamuniggaMedia.portraits.portrait02.alt,
   } satisfies StoryImage,
 } as const;
 
 export const storySections: StorySection[] = [
   {
-    id: "wamunigga-story",
+    id: "chair",
     index: "01",
-    title: "Story",
-    headline: "Wamunigga's story",
-    paragraphs: [],
+    title: "Chair",
+    headline: "Behind the chair",
+    paragraphs: [
+      "Wamunigga Didier cuts in Kigali.",
+      "The brand is built from the work — fades, finishing, and clients who leave looking sharper than they arrived.",
+    ],
   },
   {
-    id: "journey",
+    id: "work",
     index: "02",
-    title: "Journey",
-    headline: "Barbering journey",
-    paragraphs: [],
+    title: "Work",
+    headline: "The work speaks first",
+    paragraphs: [
+      "See the archive for fades, colour, and clients from the chair.",
+      "Instagram holds more of the day-to-day — the site keeps the strongest frames.",
+    ],
   },
   {
-    id: "philosophy",
+    id: "shop",
     index: "03",
-    title: "Philosophy",
-    headline: "Philosophy",
-    paragraphs: [],
-  },
-  {
-    id: "craftsmanship",
-    index: "04",
-    title: "Craft",
-    headline: "Craftsmanship",
-    paragraphs: [],
-  },
-  {
-    id: "clientele",
-    index: "05",
-    title: "Clientele",
-    headline: "Celebrity & high-profile clientele",
-    paragraphs: [],
-  },
-  {
-    id: "brand",
-    index: "06",
-    title: "Brand",
-    headline: "Wamunigga Cuts",
-    paragraphs: [],
-  },
-  {
-    id: "team",
-    index: "07",
-    title: "Team",
-    headline: "Team",
-    paragraphs: [],
+    title: "Shop",
+    headline: "Kigali Clipper Zone",
+    paragraphs: [
+      "The shop is where the cuts happen.",
+      "Address and hours will appear on Contact once confirmed.",
+    ],
   },
 ];
 
 export const storyPendingMessage =
-  "Verified story copy will be added here. Share approved biography, timeline, and names with the project team.";
+  "Verified story details will be added here when Wamunigga supplies them.";
 
 export type StoryPageContent = typeof storyPage;

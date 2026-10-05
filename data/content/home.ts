@@ -1,112 +1,148 @@
 /**
- * Homepage storytelling copy — editorial tone, replaceable with verified brand voice.
- * Avoid generic salon language; avoid invented biography, prices, or addresses.
+ * Homepage storytelling — specific, restrained copy.
+ * Media paths point at real assets under /public/images/wamunigga.
  */
+
+import { wamuniggaMedia } from "@/data/content/media";
+import type { InstagramEmbedKey } from "@/data/instagram";
 
 export type HomeImageSlot = {
   src: string | null;
   alt: string;
+  /** Optional object-position for art direction */
+  objectPosition?: string;
 };
 
 export const homeContent = {
   reputation: {
     index: "01",
     title: "Reputation",
-    eyebrow: "Why Wamunigga",
-    lead: "A name built in the chair — not on a template.",
+    eyebrow: "A name built behind the chair",
+    lead: "The work travels. The chair stays in Kigali.",
     paragraphs: [
-      "Wamunigga Cuts is a personal brand first: precision, presence, and the confidence that comes from a cut done with intention.",
-      "This is barbering with editorial standards — masculine, modern, and rooted in contemporary African urban culture without the clichés.",
+      "Wamunigga Cuts is known for detailed fades, distinctive finishes, and cuts that hold up outside the shop.",
+      "The reputation comes from the chair — not from slogans.",
     ],
-    pullQuote:
-      "Craftsmanship you can read in the silhouette. Personality you carry when you leave.",
+    frames: [
+      {
+        id: "davido",
+        label: "Davido",
+        caption: "In the chair",
+        image: wamuniggaMedia.clients.davido,
+      },
+      {
+        id: "juma",
+        label: "Juma Jux",
+        caption: "Finished cut",
+        image: wamuniggaMedia.clients.jumaJux,
+      },
+      {
+        id: "chris",
+        label: "Chris Easy",
+        caption: "After the cut",
+        image: wamuniggaMedia.clients.chrisEasy,
+      },
+    ],
+    reel: "davido" as InstagramEmbedKey,
+    reelNote: "Footage from the chair — not an endorsement statement.",
   },
   craft: {
     index: "02",
     title: "The Craft",
-    eyebrow: "Raw craft × luxury digital",
+    eyebrow: "Visible work",
+    lead: "Fades, colour, shape, and finishing you can see.",
     lines: [
-      "Every line is deliberate.",
-      "Every fade is architecture.",
-      "Every finish is a statement.",
+      "Clean fades.",
+      "Tight finishing.",
+      "Cuts that fit the person.",
     ],
-    image: {
-      src: null as string | null,
-      alt: "The craft of the cut at Wamunigga Cuts",
-    } satisfies HomeImageSlot,
+    images: [
+      wamuniggaMedia.work.fade01,
+      wamuniggaMedia.work.fade02,
+      wamuniggaMedia.work.color01,
+    ],
+    reels: ["generalBenda", "bushali", "ezraUmujistoma"] as InstagramEmbedKey[],
   },
   signatureWork: {
     index: "03",
-    title: "Signature Work",
-    eyebrow: "Archive preview",
-    intro:
-      "Selected frames from the chair — a preview of the archive. Full gallery when the work section ships.",
+    title: "The Work",
+    eyebrow: "From the archive",
+    intro: "Selected frames — fades, colour, and clients from the chair.",
     items: [
       {
-        id: "preview-1",
+        id: "fade-01",
         label: "01",
-        title: "Editorial fade",
-        image: { src: null, alt: "Signature cut preview 1" } satisfies HomeImageSlot,
+        title: "Fade",
+        layout: "cinematic" as const,
+        image: wamuniggaMedia.work.fade01,
       },
       {
-        id: "preview-2",
+        id: "yve",
         label: "02",
-        title: "Structured line-up",
-        image: { src: null, alt: "Signature cut preview 2" } satisfies HomeImageSlot,
+        title: "Yve Kimenyi",
+        layout: "portrait" as const,
+        image: wamuniggaMedia.clients.yveKimenyi,
       },
       {
-        id: "preview-3",
+        id: "color",
         label: "03",
-        title: "Finish & detail",
-        image: { src: null, alt: "Signature cut preview 3" } satisfies HomeImageSlot,
+        title: "Colour",
+        layout: "portrait" as const,
+        image: wamuniggaMedia.work.color01,
+      },
+      {
+        id: "juma",
+        label: "04",
+        title: "Juma Jux",
+        layout: "cinematic" as const,
+        image: wamuniggaMedia.clients.jumaJuxAlt,
       },
     ],
+    clientReels: ["kevinKade", "bruceTheFirst"] as InstagramEmbedKey[],
     cta: { label: "View full archive", href: "/work" },
   },
-  services: {
+  chair: {
     index: "04",
-    title: "Services",
-    eyebrow: "What we offer",
-    intro:
-      "Minimal menu, maximum attention. Prices and durations live in the central service catalogue.",
+    title: "The Chair",
+    eyebrow: "Kigali Clipper Zone",
+    lead: "This is where the work happens.",
+    image: wamuniggaMedia.shop.workspace,
+    reel: "workplace" as InstagramEmbedKey,
   },
-  experience: {
+  team: {
     index: "05",
-    title: "The Experience",
-    eyebrow: "In the chair",
-    intro: "What happens when you sit down — calm, focused, premium.",
-    steps: [
-      {
-        id: "consult",
-        title: "Consult",
-        description:
-          "We read your hair, your style, and what you want to project — no rush.",
-      },
-      {
-        id: "cut",
-        title: "The cut",
-        description:
-          "The work happens with quiet confidence: clipper, scissor, and eye.",
-      },
-      {
-        id: "detail",
-        title: "Detail",
-        description:
-          "Lines, blend, and finish — the details that separate good from signature.",
-      },
-      {
-        id: "leave",
-        title: "Leave sharp",
-        description:
-          "You walk out with a cut that holds its shape and your standard.",
-      },
+    title: "The Team",
+    eyebrow: "More than one chair",
+    lead: "Good work does not stop with one barber.",
+    image: wamuniggaMedia.team.fade01,
+    reel: "employeeFade" as InstagramEmbedKey,
+  },
+  wamunigga: {
+    index: "06",
+    title: "Wamunigga",
+    eyebrow: "Behind the brand",
+    lead: "The person behind the chair.",
+    paragraphs: [
+      "Wamunigga Didier — barber and the name on the brand.",
+      "The story page stays short until he supplies the full narrative himself.",
     ],
+    images: [
+      wamuniggaMedia.portraits.fashion,
+      wamuniggaMedia.portraits.portrait02,
+    ],
+    cta: { label: "Read the story", href: "/story" },
+  },
+  services: {
+    index: "07",
+    title: "Services",
+    eyebrow: "The menu",
+    intro:
+      "Cuts, beard work, and detail sessions. Prices stay open until confirmed in the catalogue.",
   },
   bookingCta: {
-    index: "06",
-    headline: "YOUR NEXT CUT STARTS HERE.",
-    subline:
-      "Came from Instagram or WhatsApp? Book online, message the chair, or find every channel on Contact.",
+    index: "08",
+    headline: "BOOK YOUR CUT.",
+    subline: "Pick a service and time. Confirmation happens after you book.",
     primary: { label: "BOOK YOUR CUT", href: "/booking" },
     secondary: { label: "Contact", href: "/contact" },
   },

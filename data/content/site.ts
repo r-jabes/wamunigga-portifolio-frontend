@@ -8,7 +8,7 @@ export const siteConfig = {
   shortName: "Wamunigga",
   tagline: "THE ART OF THE CUT.",
   description:
-    "WAMUNIGGA CUTS — premium barbering. Book online, WhatsApp the chair, or find us from Instagram and TikTok.",
+    "Wamunigga Cuts — barbering in Kigali. Book online, or find the chair from Instagram.",
   /** Update before production deploy */
   url: "https://www.wamuniggacuts.com",
   locale: "en_RW",

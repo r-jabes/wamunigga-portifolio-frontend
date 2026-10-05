@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 
 /**
  * Editorial homepage hero — brand-first, cinematic, full-bleed.
- * Real photography mounts via `heroContent.image.src` when available.
  */
 export function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -22,10 +21,9 @@ export function HomeHero() {
     offset: ["start start", "end start"],
   });
 
-  /** Restrained scroll drift — quality, not parallax theater */
-  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0.35]);
+  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0.4]);
 
   const hasImage = Boolean(heroContent.image.src);
 
@@ -50,7 +48,7 @@ export function HomeHero() {
                 sizes={imageSizes.hero}
                 quality={imageQuality.hero}
                 className="h-full w-full"
-                imageClassName="object-cover object-center"
+                imageClassName="object-cover object-[center_20%] sm:object-[center_15%]"
               />
             </div>
           ) : (
@@ -60,7 +58,7 @@ export function HomeHero() {
                 "bg-[radial-gradient(ellipse_70%_60%_at_60%_40%,#1a1a1a_0%,#0a0a0a_70%)]",
               )}
               role="img"
-              aria-label="Cinematic placeholder — add hero photography at public/images/hero.jpg"
+              aria-label="Hero photography pending"
             >
               <div
                 aria-hidden
@@ -71,10 +69,9 @@ export function HomeHero() {
         </motion.div>
       </RevealImage>
 
-      {/* Readability veil — edge gradient only, not a floating overlay card */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/20"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/15"
       />
 
       <motion.div
@@ -85,13 +82,18 @@ export function HomeHero() {
           <Stagger
             immediate
             stagger={0.09}
-            delayChildren={0.2}
-            className="flex max-w-4xl flex-col gap-6 md:gap-8"
+            delayChildren={0.15}
+            className="flex max-w-3xl flex-col gap-5 md:gap-7"
           >
             <FadeIn staggerItem>
-              <Text variant="label" className="text-ivory-subtle">
-                {heroContent.brand}
-              </Text>
+              <div className="flex flex-col gap-2">
+                <Text variant="label" className="text-ivory">
+                  {heroContent.brand}
+                </Text>
+                <Text variant="label" className="text-ivory-subtle">
+                  {heroContent.location}
+                </Text>
+              </div>
             </FadeIn>
 
             <FadeIn staggerItem>
@@ -110,14 +112,14 @@ export function HomeHero() {
             <FadeIn staggerItem>
               <Text
                 variant="body"
-                className="max-w-md text-ivory-muted md:max-w-lg md:text-base"
+                className="max-w-sm text-ivory-muted md:text-base"
               >
                 {heroContent.positioning}
               </Text>
             </FadeIn>
 
             <FadeIn staggerItem>
-              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
+              <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:gap-4">
                 <ButtonLink
                   href={heroContent.primaryCta.href}
                   variant="primary"
@@ -136,30 +138,6 @@ export function HomeHero() {
             </FadeIn>
           </Stagger>
         </Container>
-
-        <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 md:bottom-8">
-          <motion.div
-            className="flex flex-col items-center gap-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.5 }}
-            aria-hidden
-          >
-            <span className="type-label text-[0.625rem] text-ivory-subtle">
-              Scroll
-            </span>
-            <motion.span
-              className="block h-8 w-px bg-ivory/40"
-              animate={{ scaleY: [0.55, 1, 0.55], opacity: [0.35, 0.8, 0.35] }}
-              transition={{
-                duration: 1.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ originY: 0 }}
-            />
-          </motion.div>
-        </div>
       </motion.div>
     </section>
   );

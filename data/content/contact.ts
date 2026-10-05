@@ -25,10 +25,10 @@ export const contactContent = {
     kicker: "Contact",
     title: "GET IN TOUCH.",
     intro:
-      "Most people land here from Instagram, TikTok, or WhatsApp. Pick the path that fits — book online, message the chair, or find us.",
+      "Came from Instagram or WhatsApp? Book online, message the chair, or find every channel here.",
     conversionLead: "From the feed to the chair.",
     pendingNote:
-      "Phone, Instagram, WhatsApp, and address slots stay empty until Wamunigga confirms them in this file.",
+      "WhatsApp, phone, and street address unlock when confirmed in this file.",
   },
 
   booking: {
@@ -54,9 +54,9 @@ export const contactContent = {
 
   instagram: {
     label: "Instagram",
-    href: null as string | null,
-    handle: null as string | null,
-    description: "Cuts, atmosphere, and booking prompts from the feed.",
+    href: "https://www.instagram.com/wamunigga_cuts/" as string | null,
+    handle: "@wamunigga_cuts" as string | null,
+    description: "Cuts and atmosphere from the shop.",
   },
 
   tiktok: {
@@ -68,10 +68,10 @@ export const contactContent = {
 
   location: {
     label: "Location",
-    /** Short line for UI, e.g. "Kigali, Rwanda" */
-    text: null as string | null,
+    /** Short line for UI — city confirmed for brand presence */
+    text: "Kigali, Rwanda" as string | null,
     streetAddress: null as string | null,
-    addressLocality: null as string | null,
+    addressLocality: "Kigali" as string | null,
     addressRegion: null as string | null,
     postalCode: null as string | null,
     addressCountry: "RW",

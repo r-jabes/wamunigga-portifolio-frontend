@@ -45,6 +45,18 @@ export function StoryPageContent() {
         </div>
       </PageContainer>
 
+      <PageContainer width="default" className="pb-8">
+        <FadeIn className="max-w-xl lg:ml-auto">
+          <CinematicMedia
+            image={{
+              src: storyPage.secondaryPortrait.src,
+              alt: storyPage.secondaryPortrait.alt,
+            }}
+            aspect="portrait"
+          />
+        </FadeIn>
+      </PageContainer>
+
       <div className="sticky top-16 z-30 border-y border-border bg-background/90 backdrop-blur-md md:top-[4.75rem]">
         <PageContainer width="wide" className="py-4">
           <nav aria-label="Story sections">
@@ -73,14 +85,12 @@ export function StoryPageContent() {
           <StorySectionBlock key={section.id} section={section} />
         ))}
 
-        <div className="border-t border-border pt-12">
-          <Text variant="body-sm" className="max-w-lg text-muted">
-            To publish this page, add verified paragraphs in{" "}
-            <code className="text-ivory-subtle">data/content/story.ts</code>{" "}
-            — one section at a time, with source approval.
-          </Text>
-          <TextLink href="/work" variant="cta" className="mt-6 inline-flex">
-            Explore the work
+        <div className="flex flex-wrap gap-6 border-t border-border pt-12">
+          <TextLink href="/work" variant="cta">
+            View the work
+          </TextLink>
+          <TextLink href="/booking" variant="cta">
+            Book your cut
           </TextLink>
         </div>
       </PageContainer>

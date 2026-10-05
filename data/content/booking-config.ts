@@ -4,7 +4,7 @@
 export const bookingConfig = {
   title: "BOOK YOUR CUT",
   intro:
-    "From Instagram to the chair — pick your service, time, and details. No payment online yet; we confirm your appointment directly.",
+    "From Instagram to the chair — pick a service and time. Confirmation comes after you book.",
   /** When false, barber step shows but defaults to any barber */
   requireBarberSelection: false,
   defaultSlotMinutes: 30,

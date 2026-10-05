@@ -1,15 +1,17 @@
 import { HomeHero } from "@/sections/home-hero";
 import {
   HomeBookingCtaSection,
+  HomeChairSection,
   HomeCraftSection,
-  HomeExperienceSection,
   HomeReputationSection,
   HomeServicesSection,
   HomeSignatureWorkSection,
+  HomeTeamSection,
+  HomeWamuniggaSection,
 } from "@/sections/home";
 
 /**
- * Homepage — hero (Phase 3) + storytelling sections (Phase 4).
+ * Homepage — real photography + selective Instagram Reels inside editorial storytelling.
  */
 export default function Home() {
   return (
@@ -18,8 +20,10 @@ export default function Home() {
       <HomeReputationSection />
       <HomeCraftSection />
       <HomeSignatureWorkSection />
+      <HomeChairSection />
+      <HomeTeamSection />
+      <HomeWamuniggaSection />
       <HomeServicesSection />
-      <HomeExperienceSection />
       <HomeBookingCtaSection />
     </>
   );

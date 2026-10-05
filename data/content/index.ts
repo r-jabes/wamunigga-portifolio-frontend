@@ -44,6 +44,7 @@ export {
   type OpeningHourDay,
   type Weekday,
 } from "./contact";
+export { wamuniggaMedia, type WamuniggaMediaImage } from "./media";
 export { barbers, getActiveBarbers, getBarberById, type Barber } from "./barbers";
 export { bookingConfig } from "./booking-config";
 export {

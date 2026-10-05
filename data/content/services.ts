@@ -34,7 +34,7 @@ export const servicesPage = {
   kicker: "Services",
   title: "THE MENU",
   intro:
-    "Precision grooming, clearly listed. Prices and durations are managed here — update once, reflected across the site.",
+    "Cuts, beard work, and detail sessions. Prices and durations stay open until confirmed in this catalogue.",
 } as const;
 
 /** Full catalogue */
@@ -43,7 +43,7 @@ export const services: Service[] = [
     id: "cut",
     name: "The Cut",
     description:
-      "Precision haircut shaped to your face, hair texture, and the presence you want to project.",
+      "Haircut shaped to your face, hair, and how you want to look when you leave.",
     price: {
       amount: null,
       currency: "RWF",
@@ -59,7 +59,7 @@ export const services: Service[] = [
     id: "beard",
     name: "Beard & Line",
     description:
-      "Sculpted beard work, sharp lines, and a clean finish — intentional from every angle.",
+      "Beard shaping, line-up, and clean finishing.",
     price: {
       amount: null,
       currency: "RWF",
@@ -75,7 +75,7 @@ export const services: Service[] = [
     id: "groom",
     name: "Full Groom",
     description:
-      "The complete chair experience — cut, beard, and detail work in one session.",
+      "Cut, beard, and finishing in one session.",
     price: {
       amount: null,
       currency: "RWF",
@@ -91,7 +91,7 @@ export const services: Service[] = [
     id: "detail",
     name: "Detail Session",
     description:
-      "Shape, line, and finish between full visits — keep the cut sharp.",
+      "Shape, line, and finish between full visits.",
     price: {
       amount: null,
       currency: "RWF",
@@ -106,8 +106,7 @@ export const services: Service[] = [
   {
     id: "design",
     name: "Design Work",
-    description:
-      "Pattern, texture, and graphic intent — for clients who want hair as design.",
+    description: "Pattern and graphic work in the hair.",
     price: {
       amount: null,
       currency: "RWF",
@@ -122,8 +121,7 @@ export const services: Service[] = [
   {
     id: "signature",
     name: "Signature Session",
-    description:
-      "Extended time in the chair for signature-level work and consultation.",
+    description: "Longer session for detailed work and a proper consult.",
     price: {
       amount: null,
       currency: "RWF",
