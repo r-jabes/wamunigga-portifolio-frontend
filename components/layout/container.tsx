@@ -25,7 +25,7 @@ export function Container({
   return (
     <Component
       className={cn(
-        "mx-auto w-full px-5 sm:px-6 md:px-8 lg:px-10",
+        "mx-auto w-full px-[max(1rem,var(--gutter))] sm:px-6 md:px-8 lg:px-10",
         widths[width],
         className,
       )}

@@ -1,4 +1,4 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import { forwardRef, type ElementType, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const variants = {
@@ -34,18 +34,19 @@ export type TextProps = HTMLAttributes<HTMLElement> & {
 };
 
 /** Typography primitive — maps brand type ramp to semantic HTML. */
-export function Text({
-  as,
-  variant = "body",
-  className,
-  children,
-  ...props
-}: TextProps) {
-  const Component = as ?? defaultTags[variant];
+export const Text = forwardRef<HTMLElement, TextProps>(function Text(
+  { as, variant = "body", className, children, ...props },
+  ref,
+) {
+  const Component = (as ?? defaultTags[variant]) as ElementType;
 
   return (
-    <Component className={cn(variants[variant], className)} {...props}>
+    <Component
+      ref={ref}
+      className={cn(variants[variant], className)}
+      {...props}
+    >
       {children}
     </Component>
   );
-}
+});

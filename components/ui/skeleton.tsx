@@ -18,7 +18,7 @@ export function Skeleton({
       aria-label={label}
       className={cn(
         "relative block overflow-hidden bg-surface-elevated",
-        "after:absolute after:inset-0 after:-translate-x-full after:animate-[skeleton-shimmer_1.6s_ease_infinite]",
+        "after:absolute after:inset-0 after:-translate-x-full motion-safe:after:animate-[skeleton-shimmer_1.6s_ease_infinite]",
         "after:bg-gradient-to-r after:from-transparent after:via-ivory/[0.04] after:to-transparent",
         className,
       )}

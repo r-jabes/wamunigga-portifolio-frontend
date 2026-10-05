@@ -34,6 +34,6 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 9 — contact + conversion.** `/contact` with WhatsApp, phone, social, hours, maps slots;  
-LocalBusiness JSON-LD, sitemap/robots, Open Graph image for social shares.  
-Fill real links in `data/content/contact.ts`. Set `BOOKING_ADMIN_SECRET` for `/admin`.
+**Phase 10 — production polish.** Accessibility, loading/error states, booking resilience,  
+image/font/SEO hardening. Permanent rules live in `AGENTS.md`.  
+Fill real contact data in `data/content/contact.ts`. Set `BOOKING_ADMIN_SECRET` for `/admin`.

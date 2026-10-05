@@ -11,12 +11,13 @@
   --background: #0a0a0a;
   --foreground: #f2f0eb;
   --ivory: #f2f0eb;
-  --ivory-muted: rgba(242, 240, 235, 0.72);
-  --ivory-subtle: rgba(242, 240, 235, 0.45);
+  --ivory-muted: rgba(242, 240, 235, 0.78);
+  --ivory-subtle: rgba(242, 240, 235, 0.55);
   --ivory-faint: rgba(242, 240, 235, 0.12);
   --accent: #651b2e;
   --champagne: #b69a62;
-  --muted: #8a8780;
+  /* Slightly lifted for WCAG body text on near-black */
+  --muted: #a39f96;
   --surface: #121212;
   --surface-elevated: #1a1a1a;
   --surface-inset: #0e0e0e;
@@ -46,11 +47,13 @@
   --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
   --shadow-inset: inset 0 0 0 1px rgba(242, 240, 235, 0.08);
 
-  /* Layout */
+  /* Layout — gutters stay usable at 320px */
   --container-narrow: 48rem;
   --container-default: 72rem;
   --container-wide: 80rem;
-  --gutter: 1.25rem;
+  --gutter: clamp(1rem, 4vw, 1.25rem);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
   --spacing-section: 5rem;
   --spacing-section-lg: 8rem;
   --spacing-section-hero: clamp(5rem, 12vh, 9rem);

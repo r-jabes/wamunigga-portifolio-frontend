@@ -49,6 +49,9 @@ export function MediaImage(props: MediaImageProps) {
     ...imageProps
   } = props;
 
+  const priority = "priority" in imageProps ? imageProps.priority : undefined;
+  const loading = priority ? undefined : ("lazy" as const);
+
   if (props.fill) {
     return (
       <div
@@ -64,6 +67,8 @@ export function MediaImage(props: MediaImageProps) {
           fill
           sizes={sizes}
           quality={quality}
+          loading={loading}
+          decoding="async"
           className={cn("object-cover", imageClassName)}
         />
       </div>
@@ -77,6 +82,8 @@ export function MediaImage(props: MediaImageProps) {
         alt={alt}
         sizes={sizes}
         quality={quality}
+        loading={loading}
+        decoding="async"
         className={cn(aspect && "h-full w-full object-cover", imageClassName)}
       />
     </div>

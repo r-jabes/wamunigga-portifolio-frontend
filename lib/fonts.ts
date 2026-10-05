@@ -11,12 +11,15 @@ export const fontDisplay = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  /** Trim unused weights to keep the critical font payload lean. */
+  weight: ["400", "500", "600"],
+  preload: true,
 });
 
 export const fontSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+  preload: true,
 });

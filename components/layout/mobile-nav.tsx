@@ -41,9 +41,10 @@ export function MobileNav({ className }: MobileNavProps) {
         data-cursor="interactive"
         aria-expanded={open}
         aria-controls={panelId}
+        aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((value) => !value)}
         className={cn(
-          "relative z-[60] flex h-11 items-center gap-3 type-label text-ivory",
+          "relative z-[60] flex min-h-11 min-w-11 items-center gap-3 type-label text-ivory",
           focusRingClass,
         )}
       >
