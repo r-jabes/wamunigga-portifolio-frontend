@@ -14,8 +14,8 @@ export function StoryPageContent() {
   return (
     <>
       <PageContainer width="default" className="section-space-hero pb-10">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
-          <Stagger immediate className="flex flex-col gap-6 lg:col-span-7">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-10">
+          <Stagger immediate className="flex flex-col gap-5 lg:col-span-7">
             <FadeIn staggerItem>
               <Text variant="label">{storyPage.kicker}</Text>
             </FadeIn>
@@ -39,14 +39,13 @@ export function StoryPageContent() {
               }}
               aspect="portrait"
               priority
-              revealFrom="right"
             />
           </FadeIn>
         </div>
       </PageContainer>
 
       <PageContainer width="default" className="pb-8">
-        <FadeIn className="max-w-xl lg:ml-auto">
+        <FadeIn className="max-w-md lg:ml-auto">
           <CinematicMedia
             image={{
               src: storyPage.secondaryPortrait.src,

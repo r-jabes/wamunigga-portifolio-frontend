@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ArchiveFilter } from "@/components/archive/archive-filter";
 import { ArchiveLightbox } from "@/components/archive/archive-lightbox";
 import { ArchiveTile } from "@/components/archive/archive-tile";
+import { LocalVideoPlayer } from "@/components/media/local-video";
 import { PageContainer } from "@/components/layout/page-container";
 import { FadeIn, Stagger } from "@/components/motion";
 import { Text } from "@/components/ui/text";
@@ -15,6 +16,7 @@ import {
   type ArchiveFilterId,
   type ArchiveItem,
 } from "@/data/content/archive";
+import { allLocalVideos } from "@/data/content/videos";
 
 function groupByCategory(items: ArchiveItem[]) {
   return archiveCategories
@@ -72,15 +74,35 @@ export function WorkArchive() {
         </PageContainer>
       </div>
 
-      <PageContainer width="wide" className="section-space flex flex-col gap-20 md:gap-28">
+      {filter === "all" ? (
+        <PageContainer width="wide" className="pt-12">
+          <FadeIn>
+            <Text variant="label" className="mb-6 text-ivory-subtle">
+              Film from the chair
+            </Text>
+          </FadeIn>
+          <Stagger
+            stagger={0.06}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          >
+            {allLocalVideos.map((video) => (
+              <FadeIn key={video.id} staggerItem>
+                <LocalVideoPlayer video={video} aspect="reel" />
+              </FadeIn>
+            ))}
+          </Stagger>
+        </PageContainer>
+      ) : null}
+
+      <PageContainer width="wide" className="section-space flex flex-col gap-12 md:gap-16">
         {groups.map(({ category, items }) => (
           <section
             key={category.id}
             id={category.id}
             aria-labelledby={`archive-${category.id}-title`}
-            className="flex flex-col gap-8 md:gap-10"
+            className="flex flex-col gap-6"
           >
-            <header className="grid gap-4 border-t border-border pt-10 md:grid-cols-12 md:gap-8">
+            <header className="grid gap-3 border-t border-border pt-8 md:grid-cols-12 md:gap-6">
               <Text
                 id={`archive-${category.id}-title`}
                 variant="label"
@@ -88,11 +110,7 @@ export function WorkArchive() {
               >
                 {category.index}
               </Text>
-              <Text
-                as="h2"
-                variant="display-md"
-                className="md:col-span-4"
-              >
+              <Text as="h2" variant="display-md" className="md:col-span-4">
                 {category.title}
               </Text>
               <Text variant="body-sm" className="md:col-span-6 md:max-w-md">
@@ -100,7 +118,10 @@ export function WorkArchive() {
               </Text>
             </header>
 
-            <Stagger stagger={0.08} className="flex flex-col gap-6 md:gap-8">
+            <Stagger
+              stagger={0.08}
+              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            >
               {items.map((item) => (
                 <FadeIn key={item.id} staggerItem>
                   <ArchiveTile

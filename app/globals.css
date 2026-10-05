@@ -54,9 +54,9 @@
   --gutter: clamp(1rem, 4vw, 1.25rem);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
-  --spacing-section: 5rem;
-  --spacing-section-lg: 8rem;
-  --spacing-section-hero: clamp(5rem, 12vh, 9rem);
+  --spacing-section: 3.5rem;
+  --spacing-section-lg: 5.5rem;
+  --spacing-section-hero: clamp(3.5rem, 8vh, 6rem);
 
   /* Motion */
   --ease-out-premium: cubic-bezier(0.16, 1, 0.3, 1);

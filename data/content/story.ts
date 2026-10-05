@@ -1,6 +1,5 @@
 /**
- * Story page — portraits only until verified biography exists.
- * Do not invent childhood stories, awards, or clienteles lists.
+ * Story page — portraits + restrained facts.
  */
 
 import { wamuniggaMedia } from "@/data/content/media";
@@ -15,8 +14,8 @@ export type StorySection = {
   index: string;
   title: string;
   headline: string;
-  /** Verified copy only — leave empty until supplied */
   paragraphs: readonly string[];
+  image?: StoryImage;
 };
 
 export const storyPage = {
@@ -44,6 +43,7 @@ export const storySections: StorySection[] = [
       "Wamunigga Didier cuts in Kigali.",
       "The brand is built from the work — fades, finishing, and clients who leave looking sharper than they arrived.",
     ],
+    image: wamuniggaMedia.shop.workspace,
   },
   {
     id: "work",
@@ -52,8 +52,9 @@ export const storySections: StorySection[] = [
     headline: "The work speaks first",
     paragraphs: [
       "See the archive for fades, colour, and clients from the chair.",
-      "Instagram holds more of the day-to-day — the site keeps the strongest frames.",
+      "Local video from the shop sits alongside the stills — no Instagram embeds.",
     ],
+    image: wamuniggaMedia.work.fade01,
   },
   {
     id: "shop",
@@ -64,6 +65,7 @@ export const storySections: StorySection[] = [
       "The shop is where the cuts happen.",
       "Address and hours will appear on Contact once confirmed.",
     ],
+    image: wamuniggaMedia.team.fade01,
   },
 ];
 

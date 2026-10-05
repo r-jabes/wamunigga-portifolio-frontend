@@ -1,21 +1,21 @@
 import { CinematicMedia } from "@/components/sections/cinematic-media";
-import { InstagramReelEmbed } from "@/components/media/instagram-reel-embed";
+import { LocalVideoPlayer } from "@/components/media/local-video";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Section } from "@/components/layout/section";
 import { FadeIn, Stagger } from "@/components/motion";
 import { Text } from "@/components/ui/text";
 import { homeContent } from "@/data/content/home";
-import { getInstagramEmbed } from "@/data/instagram";
+import { getLocalVideo } from "@/data/content/videos";
 
 const content = homeContent.reputation;
 
 export function HomeReputationSection() {
-  const reel = getInstagramEmbed(content.reel);
+  const video = getLocalVideo(content.video);
 
   return (
     <Section id="reputation" width="default">
-      <div className="flex flex-col gap-12 lg:gap-16">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <div className="flex flex-col gap-8">
+        <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionHeading
               index={content.index}
@@ -23,8 +23,7 @@ export function HomeReputationSection() {
               eyebrow={content.eyebrow}
             />
           </div>
-
-          <Stagger className="flex flex-col gap-6 lg:col-span-7">
+          <Stagger className="flex flex-col gap-4 lg:col-span-7">
             <FadeIn staggerItem>
               <Text variant="subhead" className="text-ivory">
                 {content.lead}
@@ -40,40 +39,31 @@ export function HomeReputationSection() {
           </Stagger>
         </div>
 
-        <Stagger
-          stagger={0.08}
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {content.frames.map((frame, index) => (
-            <FadeIn
-              key={frame.id}
-              staggerItem
-              className={index === 0 ? "sm:col-span-2 lg:col-span-1" : undefined}
-            >
-              <article className="flex flex-col gap-3">
-                <CinematicMedia
-                  image={frame.image}
-                  aspect={index === 0 ? "cinematic" : "portrait"}
-                />
-                <div className="flex flex-col gap-1 border-t border-border pt-3">
-                  <Text variant="label" className="text-ivory-subtle">
-                    {frame.caption}
-                  </Text>
-                  <Text variant="subhead" className="text-ivory">
-                    {frame.label}
-                  </Text>
-                </div>
-              </article>
-            </FadeIn>
-          ))}
-        </Stagger>
-
-        <FadeIn className="max-w-md lg:ml-auto">
-          <Text variant="caption" className="mb-3 text-muted">
-            {content.reelNote}
-          </Text>
-          <InstagramReelEmbed embed={reel} />
-        </FadeIn>
+        <div className="grid gap-4 lg:grid-cols-12 lg:items-start">
+          <Stagger
+            stagger={0.08}
+            className="grid grid-cols-3 gap-2 sm:gap-4 lg:col-span-8"
+          >
+            {content.frames.map((frame) => (
+              <FadeIn key={frame.id} staggerItem>
+                <article className="flex flex-col gap-3">
+                  <CinematicMedia image={frame.image} aspect="portrait" />
+                  <div className="flex flex-col gap-1 border-t border-border pt-3">
+                    <Text variant="label" className="text-ivory-subtle">
+                      {frame.caption}
+                    </Text>
+                    <Text variant="subhead" className="text-ivory">
+                      {frame.label}
+                    </Text>
+                  </div>
+                </article>
+              </FadeIn>
+            ))}
+          </Stagger>
+          <FadeIn className="mx-auto w-full max-w-[12rem] lg:col-span-4 lg:mx-0 lg:justify-self-end">
+            <LocalVideoPlayer video={video} aspect="reel" />
+          </FadeIn>
+        </div>
       </div>
     </Section>
   );

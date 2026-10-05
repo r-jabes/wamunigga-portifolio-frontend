@@ -1,6 +1,5 @@
 /**
- * Work / archive — real photography only.
- * Amasunzu omitted until strong visual assets exist.
+ * Work / archive — local photography. Gaps filled with available frames.
  */
 
 import { wamuniggaMedia } from "@/data/content/media";
@@ -10,7 +9,7 @@ export type ArchiveImage = {
   alt: string;
 };
 
-export type ArchiveCategoryId = "fades" | "colour" | "clients" | "signature-cuts";
+export type ArchiveCategoryId = "fades" | "colour" | "clients" | "shop" | "signature-cuts";
 
 export type ArchiveCategory = {
   id: ArchiveCategoryId;
@@ -31,8 +30,7 @@ export type ArchiveItem = {
 
 export const archivePage = {
   title: "THE WORK",
-  intro:
-    "Fades, colour, and clients from the chair — selected frames, not a feed dump.",
+  intro: "Fades, colour, clients, and the chair — selected frames from Kigali.",
 } as const;
 
 export const archiveCategories: ArchiveCategory[] = [
@@ -46,7 +44,7 @@ export const archiveCategories: ArchiveCategory[] = [
     id: "colour",
     index: "02",
     title: "COLOUR",
-    description: "Colour work finished in the shop.",
+    description: "Colour work from the shop.",
   },
   {
     id: "clients",
@@ -55,8 +53,14 @@ export const archiveCategories: ArchiveCategory[] = [
     description: "People who sat in the chair.",
   },
   {
-    id: "signature-cuts",
+    id: "shop",
     index: "04",
+    title: "THE CHAIR",
+    description: "The room behind the work.",
+  },
+  {
+    id: "signature-cuts",
+    index: "05",
     title: "SIGNATURE",
     description: "Frames that carry the name.",
   },
@@ -67,7 +71,7 @@ export const archiveItems: ArchiveItem[] = [
     id: "fade-01",
     categoryId: "fades",
     title: "Fade — structure",
-    layout: "cinematic",
+    layout: "portrait",
     image: wamuniggaMedia.work.fade01,
   },
   {
@@ -78,11 +82,39 @@ export const archiveItems: ArchiveItem[] = [
     image: wamuniggaMedia.work.fade02,
   },
   {
+    id: "team-fade",
+    categoryId: "fades",
+    title: "Team taper",
+    layout: "portrait",
+    image: wamuniggaMedia.team.fade01,
+  },
+  {
     id: "colour-01",
     categoryId: "colour",
-    title: "Colour — finish",
+    title: "Colour — frame",
     layout: "portrait",
     image: wamuniggaMedia.work.color01,
+  },
+  {
+    id: "client-davido",
+    categoryId: "clients",
+    title: "Davido",
+    layout: "portrait",
+    image: wamuniggaMedia.clients.davido,
+  },
+  {
+    id: "client-juma",
+    categoryId: "clients",
+    title: "Juma Jux",
+    layout: "portrait",
+    image: wamuniggaMedia.clients.jumaJux,
+  },
+  {
+    id: "client-juma-02",
+    categoryId: "clients",
+    title: "Juma Jux",
+    layout: "portrait",
+    image: wamuniggaMedia.clients.jumaJux02,
   },
   {
     id: "client-yve",
@@ -92,13 +124,6 @@ export const archiveItems: ArchiveItem[] = [
     image: wamuniggaMedia.clients.yveKimenyi,
   },
   {
-    id: "client-juma",
-    categoryId: "clients",
-    title: "Juma Jux",
-    layout: "cinematic",
-    image: wamuniggaMedia.clients.jumaJux,
-  },
-  {
     id: "client-chris",
     categoryId: "clients",
     title: "Chris Easy",
@@ -106,11 +131,11 @@ export const archiveItems: ArchiveItem[] = [
     image: wamuniggaMedia.clients.chrisEasy,
   },
   {
-    id: "client-davido",
+    id: "client-luckyman",
     categoryId: "clients",
-    title: "Davido",
-    layout: "cinematic",
-    image: wamuniggaMedia.clients.davido,
+    title: "Luckyman Nzeyimana",
+    layout: "portrait",
+    image: wamuniggaMedia.clients.luckyman,
   },
   {
     id: "client-rugaju",
@@ -120,18 +145,32 @@ export const archiveItems: ArchiveItem[] = [
     image: wamuniggaMedia.clients.rugajuReagan,
   },
   {
-    id: "signature-team",
-    categoryId: "signature-cuts",
-    title: "Team taper",
-    layout: "portrait",
-    image: wamuniggaMedia.team.fade01,
-  },
-  {
-    id: "signature-shop",
-    categoryId: "signature-cuts",
-    title: "The workspace",
+    id: "shop-01",
+    categoryId: "shop",
+    title: "Workspace",
     layout: "cinematic",
     image: wamuniggaMedia.shop.workspace,
+  },
+  {
+    id: "signature-fashion",
+    categoryId: "signature-cuts",
+    title: "Wamunigga",
+    layout: "portrait",
+    image: wamuniggaMedia.portraits.fashion,
+  },
+  {
+    id: "signature-portrait",
+    categoryId: "signature-cuts",
+    title: "Portrait",
+    layout: "portrait",
+    image: wamuniggaMedia.portraits.portrait02,
+  },
+  {
+    id: "signature-hero",
+    categoryId: "signature-cuts",
+    title: "Editorial",
+    layout: "portrait",
+    image: wamuniggaMedia.portraits.hero,
   },
 ];
 

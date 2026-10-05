@@ -1,15 +1,13 @@
 /**
- * Homepage storytelling — specific, restrained copy.
- * Media paths point at real assets under /public/images/wamunigga.
+ * Homepage storytelling — local photos + selective local videos.
  */
 
 import { wamuniggaMedia } from "@/data/content/media";
-import type { InstagramEmbedKey } from "@/data/instagram";
+import type { LocalVideoKey } from "@/data/content/videos";
 
 export type HomeImageSlot = {
   src: string | null;
   alt: string;
-  /** Optional object-position for art direction */
   objectPosition?: string;
 };
 
@@ -43,37 +41,30 @@ export const homeContent = {
         image: wamuniggaMedia.clients.chrisEasy,
       },
     ],
-    reel: "davido" as InstagramEmbedKey,
-    reelNote: "Footage from the chair — not an endorsement statement.",
+    video: "davido" as LocalVideoKey,
   },
   craft: {
     index: "02",
     title: "The Craft",
     eyebrow: "Visible work",
     lead: "Fades, colour, shape, and finishing you can see.",
-    lines: [
-      "Clean fades.",
-      "Tight finishing.",
-      "Cuts that fit the person.",
-    ],
-    images: [
-      wamuniggaMedia.work.fade01,
-      wamuniggaMedia.work.fade02,
-      wamuniggaMedia.work.color01,
-    ],
-    reels: ["generalBenda", "bushali", "ezraUmujistoma"] as InstagramEmbedKey[],
+    lines: ["Clean fades.", "Tight finishing.", "Cuts that fit the person."],
+    images: [wamuniggaMedia.work.fade01, wamuniggaMedia.work.fade02],
+    /** Colour is a local reel, not a still */
+    colorVideo: "workColor" as LocalVideoKey,
+    craftVideos: ["generalBenda", "bushali", "ezra"] as LocalVideoKey[],
   },
   signatureWork: {
     index: "03",
     title: "The Work",
     eyebrow: "From the archive",
-    intro: "Selected frames — fades, colour, and clients from the chair.",
+    intro: "Selected frames and cuts from the chair.",
     items: [
       {
         id: "fade-01",
         label: "01",
         title: "Fade",
-        layout: "cinematic" as const,
+        layout: "portrait" as const,
         image: wamuniggaMedia.work.fade01,
       },
       {
@@ -84,21 +75,21 @@ export const homeContent = {
         image: wamuniggaMedia.clients.yveKimenyi,
       },
       {
-        id: "color",
+        id: "juma",
         label: "03",
-        title: "Colour",
+        title: "Juma Jux",
         layout: "portrait" as const,
-        image: wamuniggaMedia.work.color01,
+        image: wamuniggaMedia.clients.jumaJux02,
       },
       {
-        id: "juma",
+        id: "luckyman",
         label: "04",
-        title: "Juma Jux",
-        layout: "cinematic" as const,
-        image: wamuniggaMedia.clients.jumaJuxAlt,
+        title: "Luckyman Nzeyimana",
+        layout: "portrait" as const,
+        image: wamuniggaMedia.clients.luckyman,
       },
     ],
-    clientReels: ["kevinKade", "bruceTheFirst"] as InstagramEmbedKey[],
+    videos: ["kevinKade", "bruceTheFirst"] as LocalVideoKey[],
     cta: { label: "View full archive", href: "/work" },
   },
   chair: {
@@ -107,7 +98,7 @@ export const homeContent = {
     eyebrow: "Kigali Clipper Zone",
     lead: "This is where the work happens.",
     image: wamuniggaMedia.shop.workspace,
-    reel: "workplace" as InstagramEmbedKey,
+    video: "shop" as LocalVideoKey,
   },
   team: {
     index: "05",
@@ -115,7 +106,7 @@ export const homeContent = {
     eyebrow: "More than one chair",
     lead: "Good work does not stop with one barber.",
     image: wamuniggaMedia.team.fade01,
-    reel: "employeeFade" as InstagramEmbedKey,
+    video: "employeeFade" as LocalVideoKey,
   },
   wamunigga: {
     index: "06",
@@ -138,6 +129,7 @@ export const homeContent = {
     eyebrow: "The menu",
     intro:
       "Cuts, beard work, and detail sessions. Prices stay open until confirmed in the catalogue.",
+    image: wamuniggaMedia.work.fade02,
   },
   bookingCta: {
     index: "08",
@@ -145,6 +137,7 @@ export const homeContent = {
     subline: "Pick a service and time. Confirmation happens after you book.",
     primary: { label: "BOOK YOUR CUT", href: "/booking" },
     secondary: { label: "Contact", href: "/contact" },
+    image: wamuniggaMedia.shop.workspace,
   },
 } as const;
 

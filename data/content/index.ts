@@ -45,6 +45,13 @@ export {
   type Weekday,
 } from "./contact";
 export { wamuniggaMedia, type WamuniggaMediaImage } from "./media";
+export {
+  localVideos,
+  allLocalVideos,
+  getLocalVideo,
+  type LocalVideo,
+  type LocalVideoKey,
+} from "./videos";
 export { barbers, getActiveBarbers, getBarberById, type Barber } from "./barbers";
 export { bookingConfig } from "./booking-config";
 export {

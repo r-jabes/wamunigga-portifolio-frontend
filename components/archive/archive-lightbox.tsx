@@ -6,7 +6,7 @@ import { MediaImage } from "@/components/media";
 import type { ArchiveItem } from "@/data/content/archive";
 import { focusRingClass } from "@/lib/a11y";
 import { transition } from "@/lib/animation";
-import { imageQuality, imageSizes } from "@/lib/images";
+import { imageQuality } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { useScrollLock } from "@/hooks/use-scroll-lock";
 import { Text } from "@/components/ui/text";
@@ -110,9 +110,9 @@ export function ArchiveLightbox({
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
-                  sizes={imageSizes.hero}
+                  sizes="(min-width: 1024px) 900px, 90vw"
                   quality={imageQuality.hero}
-                  className="h-full min-h-[50vh] w-full"
+                  className="absolute inset-0 h-full w-full"
                   imageClassName="object-contain object-center bg-surface"
                 />
               ) : (

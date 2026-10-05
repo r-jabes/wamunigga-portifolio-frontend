@@ -11,7 +11,7 @@ import {
 } from "@/sections/home";
 
 /**
- * Homepage — real photography + selective Instagram Reels inside editorial storytelling.
+ * Homepage — local photography + selective local videos.
  */
 export default function Home() {
   return (

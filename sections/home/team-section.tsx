@@ -1,20 +1,20 @@
 import { CinematicMedia } from "@/components/sections/cinematic-media";
-import { InstagramReelEmbed } from "@/components/media/instagram-reel-embed";
+import { LocalVideoPlayer } from "@/components/media/local-video";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Section } from "@/components/layout/section";
 import { FadeIn } from "@/components/motion";
 import { Text } from "@/components/ui/text";
 import { homeContent } from "@/data/content/home";
-import { getInstagramEmbed } from "@/data/instagram";
+import { getLocalVideo } from "@/data/content/videos";
 
 const content = homeContent.team;
 
 export function HomeTeamSection() {
-  const reel = getInstagramEmbed(content.reel);
+  const video = getLocalVideo(content.video);
 
   return (
     <Section id="team" width="default" className="border-t border-border">
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
+      <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
         <div className="flex flex-col gap-6 lg:col-span-5">
           <SectionHeading
             index={content.index}
@@ -30,8 +30,8 @@ export function HomeTeamSection() {
             <CinematicMedia image={content.image} aspect="portrait" />
           </FadeIn>
         </div>
-        <FadeIn className="lg:col-span-7 lg:pt-16">
-          <InstagramReelEmbed embed={reel} />
+        <FadeIn className="mx-auto w-full max-w-sm lg:col-span-7 lg:mx-0 lg:justify-self-end lg:pt-8">
+          <LocalVideoPlayer video={video} aspect="reel" />
         </FadeIn>
       </div>
     </Section>

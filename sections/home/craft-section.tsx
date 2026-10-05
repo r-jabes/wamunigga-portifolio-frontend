@@ -1,34 +1,35 @@
 import { CinematicMedia } from "@/components/sections/cinematic-media";
-import { InstagramReelEmbed } from "@/components/media/instagram-reel-embed";
+import { LocalVideoPlayer } from "@/components/media/local-video";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Section } from "@/components/layout/section";
 import { FadeIn, Stagger } from "@/components/motion";
 import { Text } from "@/components/ui/text";
 import { homeContent } from "@/data/content/home";
-import { getInstagramEmbed } from "@/data/instagram";
+import { getLocalVideo } from "@/data/content/videos";
 
 const content = homeContent.craft;
 
 export function HomeCraftSection() {
-  const reels = content.reels.map(getInstagramEmbed);
+  const colorVideo = getLocalVideo(content.colorVideo);
+  const craftVideos = content.craftVideos.map(getLocalVideo);
 
   return (
     <Section id="craft" width="wide" className="border-t border-border">
-      <div className="flex flex-col gap-10 lg:gap-14">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div className="flex flex-col gap-8">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <SectionHeading
               index={content.index}
               title={content.title}
               eyebrow={content.eyebrow}
             />
-            <FadeIn className="mt-6">
+            <FadeIn className="mt-4">
               <Text variant="body" className="max-w-md">
                 {content.lead}
               </Text>
             </FadeIn>
           </div>
-          <Stagger className="flex flex-col gap-2 lg:col-span-6 lg:pb-1">
+          <Stagger className="flex flex-col gap-1 lg:col-span-6">
             {content.lines.map((line) => (
               <FadeIn key={line} staggerItem>
                 <Text variant="display-md" className="text-ivory">
@@ -39,28 +40,22 @@ export function HomeCraftSection() {
           </Stagger>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-12">
-          <FadeIn className="lg:col-span-7">
-            <CinematicMedia
-              image={content.images[0]}
-              aspect="cinematic"
-              revealFrom="left"
-            />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:items-start">
+          <FadeIn className="lg:col-span-5">
+            <CinematicMedia image={content.images[0]} aspect="portrait" />
           </FadeIn>
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
-            <FadeIn>
-              <CinematicMedia image={content.images[1]} aspect="portrait" />
-            </FadeIn>
-            <FadeIn>
-              <CinematicMedia image={content.images[2]} aspect="portrait" />
-            </FadeIn>
-          </div>
+          <FadeIn className="lg:col-span-4">
+            <CinematicMedia image={content.images[1]} aspect="portrait" />
+          </FadeIn>
+          <FadeIn className="mx-auto max-w-xs sm:col-span-2 lg:col-span-3 lg:mx-0">
+            <LocalVideoPlayer video={colorVideo} aspect="reel" />
+          </FadeIn>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {reels.map((reel) => (
-            <FadeIn key={reel.id}>
-              <InstagramReelEmbed embed={reel} />
+        <div className="grid gap-4 sm:grid-cols-3">
+          {craftVideos.map((video) => (
+            <FadeIn key={video.id} className="mx-auto w-full max-w-xs sm:mx-0">
+              <LocalVideoPlayer video={video} aspect="reel" />
             </FadeIn>
           ))}
         </div>

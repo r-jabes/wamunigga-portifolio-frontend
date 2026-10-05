@@ -3,7 +3,7 @@
 import { MediaImage } from "@/components/media";
 import type { ArchiveItem } from "@/data/content/archive";
 import { focusRingClass } from "@/lib/a11y";
-import { imageQuality, imageSizes } from "@/lib/images";
+import { imageQuality } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { Text } from "@/components/ui/text";
 
@@ -12,10 +12,11 @@ type ArchiveTileProps = {
   onOpen: () => void;
 };
 
-/** Large archive frame with hover reveal — opens lightbox on activate. */
+/**
+ * Archive frame — fills grid cell, capped so height stays within the viewport.
+ */
 export function ArchiveTile({ item, onOpen }: ArchiveTileProps) {
-  const aspectClass =
-    item.layout === "cinematic" ? "aspect-[21/9]" : "aspect-[3/4] max-h-[85vh]";
+  const isWide = item.layout === "cinematic";
 
   return (
     <button
@@ -30,8 +31,10 @@ export function ArchiveTile({ item, onOpen }: ArchiveTileProps) {
     >
       <div
         className={cn(
-          "relative w-full overflow-hidden surface-film image-grain",
-          aspectClass,
+          "relative mx-auto overflow-hidden surface-film image-grain",
+          isWide
+            ? "aspect-[16/9] w-full max-w-[min(100%,calc(48vh*16/9))]"
+            : "aspect-[3/4] w-full max-w-[min(100%,calc(70vh*3/4))]",
         )}
       >
         {item.image.src ? (
@@ -39,24 +42,28 @@ export function ArchiveTile({ item, onOpen }: ArchiveTileProps) {
             src={item.image.src}
             alt={item.image.alt}
             fill
-            sizes={imageSizes.hero}
-            quality={imageQuality.hero}
-            className="h-full w-full"
-            imageClassName="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+            sizes={
+              isWide
+                ? "(min-width: 1024px) 960px, 100vw"
+                : "(min-width: 1024px) 360px, 80vw"
+            }
+            quality={imageQuality.standard}
+            className="absolute inset-0 h-full w-full"
+            imageClassName="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
           />
         ) : (
           <div
             role="presentation"
-            className="h-full w-full bg-[radial-gradient(ellipse_80%_70%_at_50%_40%,#1a1a1a_0%,#0a0a0a_75%)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+            className="absolute inset-0 h-full w-full bg-[radial-gradient(ellipse_80%_70%_at_50%_40%,#1a1a1a_0%,#0a0a0a_75%)]"
           />
         )}
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-80"
         />
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 p-5 sm:p-6">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 p-4 sm:p-5">
           <Text variant="label" className="text-ivory-subtle">
             View
           </Text>

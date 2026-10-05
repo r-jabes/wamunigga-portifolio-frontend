@@ -1,19 +1,12 @@
 /**
- * WAMUNIGGA CUTS
- * Instagram Reel Embed Registry
+ * WAMUNIGGA CUTS — Instagram Reel URL registry
  *
- * All Instagram Reels used throughout the Wamunigga Cuts website prototype.
- *
- * These URLs are intended to be consumed by the Instagram embed component.
- * Keep the URLs centralized here so individual pages/components do not
- * contain hard-coded Instagram links.
+ * Reference only. The site does NOT embed or load Instagram Reels.
+ * Use these URLs when downloading videos locally, then map files under
+ * public/videos/ (or similar) when local playback is added.
  */
 
 export const instagramEmbeds = {
-  // ============================================================
-  // SHOP / THE CHAIR
-  // ============================================================
-
   workplace: {
     id: "DdEZ2B5gY9O",
     url: "https://www.instagram.com/reel/DdEZ2B5gY9O/",
@@ -21,11 +14,6 @@ export const instagramEmbeds = {
     title: "Wamunigga Cuts — The Chair",
     source: "@wamunigga_cuts",
   },
-
-  // ============================================================
-  // CRAFT / WORK
-  // ============================================================
-
   generalBenda: {
     id: "Dd8kxZiALHB",
     url: "https://www.instagram.com/reel/Dd8kxZiALHB/",
@@ -33,7 +21,6 @@ export const instagramEmbeds = {
     title: "General Benda — Haircut",
     source: "@wamunigga_original",
   },
-
   bushali: {
     id: "DZucfW-gRD0",
     url: "https://www.instagram.com/reel/DZucfW-gRD0/",
@@ -41,7 +28,6 @@ export const instagramEmbeds = {
     title: "Bushali — Haircut",
     source: "@wamunigga_original",
   },
-
   ezraUmujistoma: {
     id: "DV9WFLYAKQl",
     url: "https://www.instagram.com/reel/DV9WFLYAKQl/",
@@ -49,11 +35,6 @@ export const instagramEmbeds = {
     title: "Ezra Umujistoma — Haircut",
     source: "@wamunigga_original",
   },
-
-  // ============================================================
-  // TEAM
-  // ============================================================
-
   employeeFade: {
     id: "DcjB7OzoeD9",
     url: "https://www.instagram.com/reel/DcjB7OzoeD9/",
@@ -61,11 +42,6 @@ export const instagramEmbeds = {
     title: "Clean Taper Fade",
     source: "@jones_cuts_",
   },
-
-  // ============================================================
-  // CREDIBILITY / SOCIAL PROOF
-  // ============================================================
-
   davido: {
     id: "DR4x7rDDH6d",
     url: "https://www.instagram.com/reel/DR4x7rDDH6d/",
@@ -73,11 +49,6 @@ export const instagramEmbeds = {
     title: "Davido — Wamunigga Cuts",
     source: "@wamunigga_original",
   },
-
-  // ============================================================
-  // CLIENTS
-  // ============================================================
-
   kevinKade: {
     id: "DbnpTYpoJX_",
     url: "https://www.instagram.com/reel/DbnpTYpoJX_/",
@@ -85,7 +56,6 @@ export const instagramEmbeds = {
     title: "Kevin Kade — Haircut",
     source: "@kigali_clipperzone_salon",
   },
-
   bruceTheFirst: {
     id: "DbnpIjLI1nC",
     url: "https://www.instagram.com/reel/DbnpIjLI1nC/",
@@ -95,51 +65,9 @@ export const instagramEmbeds = {
   },
 } as const;
 
-
-// ============================================================
-// TYPE
-// ============================================================
-
 export type InstagramEmbed =
   (typeof instagramEmbeds)[keyof typeof instagramEmbeds];
 
 export type InstagramEmbedKey = keyof typeof instagramEmbeds;
 
-
-// ============================================================
-// ARRAYS / HELPERS
-// ============================================================
-
 export const allInstagramEmbeds = Object.values(instagramEmbeds);
-
-export const craftEmbeds = allInstagramEmbeds.filter(
-  (embed) => embed.category === "craft"
-);
-
-export const clientEmbeds = allInstagramEmbeds.filter(
-  (embed) => embed.category === "client"
-);
-
-export const teamEmbeds = allInstagramEmbeds.filter(
-  (embed) => embed.category === "team"
-);
-
-export const shopEmbeds = allInstagramEmbeds.filter(
-  (embed) => embed.category === "shop"
-);
-
-export const credibilityEmbeds = allInstagramEmbeds.filter(
-  (embed) => embed.category === "credibility"
-);
-
-
-// ============================================================
-// LOOKUP
-// ============================================================
-
-export function getInstagramEmbed(
-  key: keyof typeof instagramEmbeds
-) {
-  return instagramEmbeds[key];
-}
-

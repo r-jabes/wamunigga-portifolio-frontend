@@ -1,23 +1,22 @@
 import { CinematicMedia } from "@/components/sections/cinematic-media";
-import { InstagramReelEmbed } from "@/components/media/instagram-reel-embed";
+import { LocalVideoPlayer } from "@/components/media/local-video";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Section } from "@/components/layout/section";
 import { FadeIn, Stagger } from "@/components/motion";
 import { TextLink } from "@/components/ui/text-link";
 import { Text } from "@/components/ui/text";
 import { homeContent } from "@/data/content/home";
-import { getInstagramEmbed } from "@/data/instagram";
-import { cn } from "@/lib/utils";
+import { getLocalVideo } from "@/data/content/videos";
 
 const content = homeContent.signatureWork;
 
 export function HomeSignatureWorkSection() {
-  const clientReels = content.clientReels.map(getInstagramEmbed);
+  const videos = content.videos.map(getLocalVideo);
 
   return (
     <Section id="work-preview" width="default" className="border-t border-border">
-      <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             index={content.index}
             title={content.title}
@@ -28,23 +27,19 @@ export function HomeSignatureWorkSection() {
           </Text>
         </div>
 
-        <Stagger stagger={0.08} className="grid gap-4 sm:grid-cols-2">
-          {content.items.map((item, index) => (
-            <FadeIn
-              key={item.id}
-              staggerItem
-              className={cn(
-                index === 0 && "sm:col-span-2",
-                index === 3 && "sm:col-span-2 lg:col-span-1",
-              )}
-            >
-              <article className="group flex flex-col gap-4">
+        <Stagger
+          stagger={0.08}
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {content.items.map((item) => (
+            <FadeIn key={item.id} staggerItem>
+              <article className="group flex flex-col gap-3">
                 <CinematicMedia
                   image={item.image}
-                  aspect={item.layout === "cinematic" ? "cinematic" : "portrait"}
+                  aspect="portrait"
                   className="transition-opacity duration-300 group-hover:opacity-95"
                 />
-                <div className="flex flex-col gap-1 border-t border-border pt-4">
+                <div className="flex flex-col gap-1 border-t border-border pt-3">
                   <Text variant="label" className="text-ivory-subtle">
                     {item.label}
                   </Text>
@@ -57,10 +52,10 @@ export function HomeSignatureWorkSection() {
           ))}
         </Stagger>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {clientReels.map((reel) => (
-            <FadeIn key={reel.id}>
-              <InstagramReelEmbed embed={reel} />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {videos.map((video) => (
+            <FadeIn key={video.id} className="mx-auto w-full max-w-xs sm:mx-0">
+              <LocalVideoPlayer video={video} aspect="reel" />
             </FadeIn>
           ))}
         </div>

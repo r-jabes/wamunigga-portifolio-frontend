@@ -7,8 +7,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [320, 375, 390, 430, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [96, 128, 256, 384],
+    /** Must include every value used by MediaImage / imageQuality */
+    qualities: [70, 75, 82],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  // Allow phone/LAN preview of the local dev server (HMR + fonts).
+  allowedDevOrigins: ["10.25.21.220"],
   // Pin Turbopack root to this app (avoids parent-directory lockfile confusion).
   turbopack: {
     root: path.join(__dirname),

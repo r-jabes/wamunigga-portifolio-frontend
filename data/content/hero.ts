@@ -1,10 +1,9 @@
 /**
- * Homepage hero content — brand-first, concise, Kigali-rooted.
+ * Homepage hero — brand-first, Kigali-rooted.
  */
 export const heroContent = {
   brand: "WAMUNIGGA CUTS",
   location: "Kigali, Rwanda",
-  /** Editorial line breaks — rendered as stacked display lines */
   headline: ["THE ART", "OF THE CUT."] as const,
   positioning: "Barbering from the chair in Kigali.",
   primaryCta: {
@@ -16,7 +15,7 @@ export const heroContent = {
     href: "/work",
   },
   image: {
-    src: "/images/wamunigga/portraits/wamunigga-hero-portrait.png",
+    src: "/images/wamunigga/portraits/wamunigga-hero-portrait.jpg",
     alt: "Wamunigga standing for an editorial portrait",
   },
 };

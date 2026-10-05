@@ -20,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${fontSans.variable} ${fontDisplay.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
