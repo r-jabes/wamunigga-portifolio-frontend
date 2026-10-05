@@ -1,17 +1,18 @@
 import { siteConfig } from "@/data/content/site";
 import { Container } from "@/components/layout/container";
+import { FooterContact } from "@/components/layout/footer-contact";
 import { NavLinks } from "@/components/layout/nav-links";
 import { Text } from "@/components/ui/text";
 
-/** Global footer — brand close, IA mirror, no invented contact details. */
+/** Global footer — brand, IA, connect (07), legal. */
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border">
-      <Container className="flex flex-col gap-10 py-12 md:py-16">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="flex max-w-md flex-col gap-3">
+    <footer id="footer" className="mt-auto border-t border-border">
+      <Container className="flex flex-col gap-12 py-12 md:py-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="flex max-w-md flex-col gap-3 lg:col-span-4">
             <Text
               as="p"
               variant="heading"
@@ -24,9 +25,18 @@ export function SiteFooter() {
             </Text>
           </div>
 
-          <nav aria-label="Footer">
-            <NavLinks variant="footer" />
-          </nav>
+          <div className="lg:col-span-4">
+            <Text variant="label" className="mb-6 text-ivory-subtle">
+              Explore
+            </Text>
+            <nav aria-label="Footer">
+              <NavLinks variant="footer" />
+            </nav>
+          </div>
+
+          <div className="lg:col-span-4">
+            <FooterContact />
+          </div>
         </div>
 
         <div className="flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
@@ -34,7 +44,7 @@ export function SiteFooter() {
             © {year} {siteConfig.shortName}
           </Text>
           <Text variant="caption" className="text-ivory-subtle/80">
-            Crafted for the cut.
+            {siteConfig.tagline}
           </Text>
         </div>
       </Container>

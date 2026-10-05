@@ -34,5 +34,5 @@ public/icons/        # brand icons
 
 ## Phase status
 
-**Phase 3 — editorial homepage hero.** Full-bleed cinematic hero with brand, CTAs, reveal, and scroll motion.  
-Add real photography at `public/images/hero.jpg` and set `heroContent.image.src`.
+**Phase 4 — homepage storytelling.** Hero plus sections 01–06; footer connect block (07) via `contactContent`.  
+Set real images in `data/content/home.ts` and social/location in `data/content/contact.ts`.
